@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Pause (hardship)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Pause stub</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · pause handoff</span>
+      <span class="arrow">SMS → web</span>
+    </div>
+    <div class="msg">Alex requested a pause on Boat. Open to review: <a href="pause.html">plt.io/z/…</a></div>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="active.html">← Boat</a>
+      <h1>Pause · Boat</h1>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="handoff-callout">
+        <strong>SMS / MMS → web</strong>
+        Pause / hardship note is collected on this page. SMS only notifies with a link.
+      </div>
+
+      <div class="field radio">
+        <label>Pause until</label>
+        <label class="opt"><input type="radio" name="until" value="manual" checked /> Until I say resume</label>
+        <label class="opt"><input type="radio" name="until" value="date" /> Until a date…</label>
+      </div>
+      <div class="field reveal" id="pause-until">
+        <label>Resume after</label>
+        <input type="text" value="Oct 10, 2026" />
+      </div>
+      <div class="field">
+        <label>Hardship note (optional)</label>
+        <textarea rows="3">Need two weeks — vet bill hit hard.</textarea>
+      </div>
+      <p class="note">Ty is notified; reminders soften while paused</p>
+      <a class="btn" href="active.html">Request pause</a>
+      <a class="btn secondary" href="active.html">Cancel</a>
+      <script>
+        document.querySelectorAll('input[name="until"]').forEach(el => {
+          el.addEventListener('change', () => {
+            document.getElementById('pause-until').classList.toggle(
+              'is-open',
+              document.querySelector('input[name="until"]:checked').value === 'date'
+            );
+          });
+        });
+      </script>
+    </div>
+  </div>
+</body>
+</html>

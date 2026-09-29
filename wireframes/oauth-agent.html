@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — OAuth agent flow</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .map-list { list-style: none; }
+    .map-list li { margin-bottom: 8px; }
+    .map-list a {
+      display: block;
+      border: 2px solid #bbb;
+      background: #f4f4f4;
+      padding: 10px 12px;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 13px;
+    }
+    .map-list a:hover { background: #e8e8e8; }
+    .map-list .n { font-weight: 700; }
+    .map-list .d { display: block; font-size: 11px; color: #666; margin-top: 2px; }
+    .map-list a.agent { border-color: #3d5a80; background: #e8eef6; }
+    .map-list a.paradigm { border-color: #2d6a4f; background: #eef6f1; }
+  </style>
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · OAuth agent scenario</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="map.html">← Map</a>
+      <h1>OAuth agent flow</h1>
+      <p class="tagline">Act-as-user · OAuth 2.1 + PKCE · via-agent audit</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money. Agents help propose / agree / record payments — never move funds.</p>
+
+      <div class="agent-persona">
+        <div class="who">OAuth agent client</div>
+        <div class="name">Agent client</div>
+        <div class="meta" style="font-size:12px;color:#666;margin-top:4px;line-height:1.4">
+          Delegated client per <a href="MVP-API.md">MVP-API.md</a>. Token bound to consenting user + scopes.
+          Never a hidden party. Never consents for the other person. Same mutual-agree gate as web.
+        </div>
+      </div>
+
+      <div class="sms-rule">
+        <strong>Story (sample)</strong>
+        The agent (acting as Ty / household helper) drafts a <strong>$200 vet bill</strong> onto the Household tab with yardstick <strong>fixed $50 / Fri</strong>. Mom’s agent reviews &amp; agrees. Payment SMS still rings the human phone. Ledger lines carry a <span class="via-badge agent">via agent</span> audit badge. Humans stay in the loop where they choose.
+      </div>
+
+      <ul class="map-list">
+        <li><a class="agent" href="oauth-agent-consent.html"><span class="n">1. OAuth consent</span><span class="d">Scopes propose · agree · payments · via-agent audit note</span></a></li>
+        <li><a class="agent" href="oauth-agent-draft.html"><span class="n">2. Agent drafts add-on</span><span class="d">$200 vet → Household tab · fixed $50/Fri yardstick</span></a></li>
+        <li><a class="agent" href="oauth-agent-agree.html"><span class="n">3. Mom’s agent agrees</span><span class="d">Reviews terms · soft confirm · human-optional callout</span></a></li>
+        <li><a class="agent" href="oauth-agent-ledger.html"><span class="n">4. Payment + ledger</span><span class="d">SMS doorbell still lands · via-agent badge on ledger</span></a></li>
+        <li><a class="agent" href="oauth-agent-prefs.html"><span class="n">5. Human-in-loop prefs</span><span class="d">Auto-agree in my scope vs require my tap</span></a></li>
+        <li><a class="paradigm" href="tab-active.html"><span class="n">Existing · Tab hub</span><span class="d">Propose / tab / agree spine unchanged</span></a></li>
+        <li><a class="paradigm" href="MVP-API.md"><span class="n">MVP-API.md</span><span class="d">OAuth 2.1 + PKCE · scopes · audit · intents</span></a></li>
+      </ul>
+
+      
+      <div class="handoff-callout" style="margin-top:12px;border-color:#3d5a80;background:#e8eef6">
+        <strong>Live app route</strong>
+        Interactive walkthrough in the SvelteKit app:
+        <a href="http://127.0.0.1:3456/oauth-agent">http://127.0.0.1:3456/oauth-agent</a>
+        (nav: OAuth agent). Wireframes below stay static HTML.
+      </div>
+
+      <div class="handoff-callout">
+        <strong>Keep existing spine intact</strong>
+        Propose · tab · agree screens stay as-is. The OAuth agent is an additional client surface over the same rules — not a parallel product.
+      </div>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>OAuth agent demo spine</strong>
+    <a href="oauth-agent.html">Flow</a>
+    <a href="oauth-agent-consent.html">Consent</a>
+    <a href="oauth-agent-draft.html">Draft</a>
+    <a href="oauth-agent-agree.html">Agree</a>
+    <a href="oauth-agent-ledger.html">Ledger</a>
+    <a href="oauth-agent-prefs.html">Prefs</a>
+  </nav>
+</body>
+</html>

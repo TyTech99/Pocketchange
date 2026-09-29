@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Request change</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Request change</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · change requested</span>
+      <span class="arrow">link only</span>
+    </div>
+    <div class="msg">Alex requested a change on Boat. Open to review: <a href="request-change.html">plt.io/r/…</a></div>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="agree.html">← Terms</a>
+      <h1>Request change · Boat</h1>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="handoff-callout">
+        <strong>Not sent as SMS body · link only</strong>
+        Collect the note on web. Other party gets a handoff SMS, not the terms rewrite over text.
+      </div>
+
+      <div class="field radio">
+        <label>What to change</label>
+        <label class="opt"><input type="radio" name="chg" value="term" checked /> Term / # of payments</label>
+        <label class="opt"><input type="radio" name="chg" value="payment" /> Payment amount / cadence</label>
+        <label class="opt"><input type="radio" name="chg" value="other" /> Something else…</label>
+      </div>
+      <div class="field reveal is-open" id="change-term">
+        <label>Proposed # of payments</label>
+        <input type="number" value="36" />
+      </div>
+      <div class="field reveal" id="change-payment">
+        <label>Proposed payment / cadence</label>
+        <input type="text" value="Biweekly · ~$22" />
+      </div>
+      <div class="field">
+        <label>Short note to Ty</label>
+        <textarea rows="3">Could we do 36 months instead of 24?</textarea>
+      </div>
+      <p class="note">Re-opens draft for both after send</p>
+      <a class="btn" href="index.html">Send note</a>
+      <a class="btn secondary" href="agree.html">Cancel</a>
+      <script>
+        function syncChg() {
+          const v = document.querySelector('input[name="chg"]:checked').value;
+          document.getElementById('change-term').classList.toggle('is-open', v === 'term');
+          document.getElementById('change-payment').classList.toggle('is-open', v === 'payment');
+        }
+        document.querySelectorAll('input[name="chg"]').forEach(el => el.addEventListener('change', syncChg));
+        syncChg();
+      </script>
+    </div>
+  </div>
+</body>
+</html>

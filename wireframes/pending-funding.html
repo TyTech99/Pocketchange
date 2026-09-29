@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Pending funding</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Screen 7 · Pending funding</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · pending-funding nudge</span>
+      <span class="arrow">SMS → web</span>
+    </div>
+    <div class="msg">Boat agreed — waiting on Ty to fund. Open: <a href="pending-funding.html">plt.io/p/…</a></div>
+    <p class="meta-line">One-liner + link · after funded: “Boat funded. Reminders start. Open loan: …”</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="index.html">← My loans</a>
+      <h1>Boat · agreed</h1>
+      <p class="tagline">Waiting for Ty to fund</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="handoff-callout">
+        <strong>SMS / MMS → web</strong>
+        Nudge SMS opens this page. Ty marks funded here; I get a one-liner when funded.
+      </div>
+
+      <div class="box filled">
+        <div class="title">No interest yet · no nudges</div>
+        <div class="meta">Monitoring starts only after Ty marks funded.</div>
+        <span class="status pending">○ Pending funding</span>
+      </div>
+
+      <div class="box">
+        <span class="wf-label">Ty’s view (lender)</span>
+        <a class="btn" href="active.html">I funded this loan</a>
+        <p class="note mt">Marks funded → Alex gets SMS one-liner → clock on</p>
+      </div>
+
+      <div class="box">
+        <span class="wf-label">My view (borrower · Alex)</span>
+        <div class="meta">I’ll get a text when Ty marks it funded.</div>
+        <a class="btn ghost mt" href="dispute.html">Never got the money</a>
+        <p class="note">(shown after funded — demo link always on). Dispute = SMS handoff → this flow on web.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="agree.html">← Agree</a> · <a href="active.html">Mark funded → Active</a> · <a href="dispute.html">Dispute</a>
+  </nav>
+</body>
+</html>

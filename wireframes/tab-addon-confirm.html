@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Tab add-on confirm</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Tab add-on · Alex confirm</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · Alex handoff</span>
+      <span class="arrow">SMS → web</span>
+    </div>
+    <div class="msg">Mom added $65 to Household tab (groceries). Open to accept: <a href="tab-addon-confirm.html">plt.io/tc/…</a></div>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="tab-addon.html">← Add-on</a>
+      <h1>Mom added $65</h1>
+      <p class="tagline">Household tab · “groceries”</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="handoff-callout">
+        <strong>SMS / MMS → web</strong>
+        Accept happens on this page. No rebalance choice — balance goes up; yardstick preview updates.
+      </div>
+
+      <div class="box" id="summary">
+        <div class="row"><span class="k">Balance</span><span class="v">$180 → $245</span></div>
+        <div class="row"><span class="k">Preview</span><span class="v" id="choice-detail">~$50 stays · ~5 payments left</span></div>
+      </div>
+
+      <p class="note">Reader voice: I / me · other = Mom · never bare “you”</p>
+
+      <a class="btn" href="tab-active.html">Accept</a>
+      <a class="btn secondary" href="tab-active.html">Talk first</a>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const yard = params.get('yard') || 'payment';
+    const detail = document.getElementById('choice-detail');
+    if (yard === 'date') {
+      detail.textContent = 'Payment $42 → $57 to hit Mar 1, 2027';
+    } else {
+      detail.textContent = '$50 stays · ~4 → ~5 payments left';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — SMS → web handoff</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Handoff map</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="map.html">← Map</a>
+      <h1>SMS / MMS → web</h1>
+      <p class="tagline">Doorbell then page · never a wizard thread</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family · we never touch your money. Chat-first but SMS is doorbell.</p>
+
+      <div class="sms-rule">
+        <strong>Paradigm</strong>
+        SMS/MMS rings the doorbell. Complex work always opens a page (or email for heavy). Prefer tap links over reply-1/2.
+      </div>
+
+      <ul class="flow">
+        <li>
+          <div class="f-title">1. Soft invite</div>
+          <div class="f-sms">…Open only if you know them: [link]</div>
+          <div class="f-web"><a href="invite.html">invite.html</a> → Continue → agree (amount hidden until open)</div>
+        </li>
+        <li>
+          <div class="f-title">2. OTP</div>
+          <div class="f-sms">PLT code: 482917…</div>
+          <div class="f-web"><a href="otp.html">otp.html</a> verify, then continue on web</div>
+        </li>
+        <li>
+          <div class="f-title">3. Agree / Request change</div>
+          <div class="f-sms">Boat terms ready. Open to agree: [link]</div>
+          <div class="f-web"><a href="agree.html">agree.html</a> / <a href="request-change.html">request-change.html</a> — not SMS body</div>
+        </li>
+        <li>
+          <div class="f-title">4. Pending funding / Funded nudge</div>
+          <div class="f-sms">Boat agreed — waiting on funding. Open: [link]</div>
+          <div class="f-web"><a href="pending-funding.html">pending-funding.html</a></div>
+        </li>
+        <li>
+          <div class="f-title">5. Payment applied confirm</div>
+          <div class="f-sms">Boat: $50 applied · $420 left</div>
+          <div class="f-web">No page required — one-liner ONLY to both (<a href="confirm-toast.html">confirm-toast.html</a>)</div>
+        </li>
+        <li>
+          <div class="f-title">6. Ambiguous payment clarify</div>
+          <div class="f-sms">Got $150. [Same as last] [All to Boat] [Open]</div>
+          <div class="f-web"><a href="clarify.html">clarify.html</a> — ONE ping; ignored → notebook pending</div>
+        </li>
+        <li>
+          <div class="f-title">7. Tab add-on / late / pause / dispute (fixed pile-on DEPRECATED)</div>
+          <div class="f-sms">Mom wants to add $65 to Household tab (groceries). Open: [link]</div>
+          <div class="f-sms">Extras on a funded fixed → tab add-on or propose a new fixed loan</div>
+          <div class="f-web"><a href="tab-addon.html">tab-addon</a> (canonical) · <a href="propose.html">propose</a> (new purpose) · <a href="pause.html">pause</a> · <a href="dispute.html">dispute</a> · <a href="pile-on.html">pile-on</a> (deprecated only)</div>
+        </li>
+        <li>
+          <div class="f-title">6b. Overpay on fixed → tab credit</div>
+          <div class="f-sms">Got $150. Rest to Household tab? [Yes] [All to Boat] [Open]</div>
+          <div class="f-web"><a href="clarify.html">clarify.html</a> — default tab credit when tab exists with same pair</div>
+        </li>
+        <li>
+          <div class="f-title">8. Due reminders (−3 / due / +3)</div>
+          <div class="f-sms">Boat due Fri · $43.87. Open loan: [link]</div>
+          <div class="f-web"><a href="active.html">active.html</a> (optional)</div>
+        </li>
+        <li>
+          <div class="f-title">9. Receipt forward (email preferred)</div>
+          <div class="f-sms">Email → payment@… · or MMS screenshot → same parser</div>
+          <div class="f-web">Confirm SMS (#5) or ONE clarify (#6)</div>
+        </li>
+        <li>
+          <div class="f-title">10. Same as last time?</div>
+          <div class="f-sms">Same as last? [Yes] [No — open]</div>
+          <div class="f-web"><a href="clarify.html">clarify.html</a> if No</div>
+        </li>
+      </ul>
+
+      <a class="btn" href="sms-templates.html">SMS plan of record</a>
+      <a class="btn secondary" href="map.html">Back to screen map</a>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="sms-templates.html">Templates</a>
+    <a href="invite-preview.html">Invite SMS</a>
+    <a href="clarify.html">Clarify</a>
+    <a href="active.html">Active</a>
+  </nav>
+</body>
+</html>

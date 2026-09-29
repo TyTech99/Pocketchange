@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Agent human-in-loop prefs</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · OAuth agent · Human-in-loop</span>
+    <a href="oauth-agent.html">OAuth agent flow</a>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="oauth-agent-ledger.html">← Ledger</a>
+      <h1>When my agent acts for me</h1>
+      <p class="tagline">Humans only in the loop where they choose</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="sms-rule">
+        <strong>Boundary</strong>
+        These toggles only govern <em>my</em> agent within scopes I granted. They never let the agent agree for Mom, silence payment SMS, or move money. No money:move scope exists.
+      </div>
+
+      <div class="box">
+        <div class="title">Agree within my scope</div>
+        <div class="toggle-row">
+          <div class="copy">
+            <strong>Require my tap</strong>
+            <span class="sub">The agent drafts; I tap Agree on the page (or magic link).</span>
+          </div>
+          <a class="toggle-switch" href="oauth-agent-prefs.html" title="off" aria-label="Require my tap off"></a>
+        </div>
+        <div class="toggle-row">
+          <div class="copy">
+            <strong>Auto-agree in scope</strong>
+            <span class="sub">The agent may submit <em>my</em> loans:agree after soft confirm. Still cannot satisfy Mom’s agree.</span>
+          </div>
+          <a class="toggle-switch on" href="oauth-agent-prefs.html" title="on" aria-label="Auto-agree in scope on"></a>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="title">Propose / add-ons</div>
+        <div class="toggle-row">
+          <div class="copy">
+            <strong>Draft freely, I send</strong>
+            <span class="sub">The agent prepares addon intents; I hit Send.</span>
+          </div>
+          <a class="toggle-switch" href="oauth-agent-prefs.html" title="off" aria-label="Draft freely off"></a>
+        </div>
+        <div class="toggle-row">
+          <div class="copy">
+            <strong>Send within scope</strong>
+            <span class="sub">The agent may POST addon intents with soft confirm (addons:propose).</span>
+          </div>
+          <a class="toggle-switch on" href="oauth-agent-prefs.html" title="on" aria-label="Send within scope on"></a>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="title">Payments</div>
+        <div class="toggle-row">
+          <div class="copy">
+            <strong>Always ring my phone</strong>
+            <span class="sub">Payment SMS doorbell stays on — not optional in MVP.</span>
+          </div>
+          <a class="toggle-switch on" href="oauth-agent-prefs.html" title="locked on" aria-label="SMS doorbell locked on"></a>
+        </div>
+        <p class="hint">Confirm / due / handoff SMS still land on the human phone even when an agent applied the ledger intent.</p>
+      </div>
+
+      <div class="soft-callout">
+        <strong>Audit always on</strong>
+        via-agent records every mutation regardless of toggle. Revoke the agent’s grant anytime from OAuth settings.
+      </div>
+
+      <a class="btn" href="oauth-agent.html">Back to OAuth agent flow</a>
+      <a class="btn secondary" href="oauth-agent-consent.html">Review agent consent</a>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>OAuth agent spine</strong>
+    <a href="oauth-agent-ledger.html">← Ledger</a> · <a href="oauth-agent.html">Flow</a> · <a href="map.html">Map</a>
+  </nav>
+</body>
+</html>

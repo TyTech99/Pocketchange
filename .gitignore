@@ -1,0 +1,11 @@
+node_modules
+.svelte-kit
+build
+data/*.db
+data/*.db-*
+.env
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~

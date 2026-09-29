@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Tab add-on</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Running tab · Add-on</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · tab add-on handoff</span>
+      <span class="arrow">SMS → web (only)</span>
+    </div>
+    <div class="msg">Mom wants to add $65 to Household tab (groceries). Open: <a href="tab-addon.html">plt.io/ta/…</a></div>
+    <p class="meta-line">Handoff only — no rebalance wizard in SMS</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="tab-active.html">← Household tab</a>
+      <h1>Add charge</h1>
+      <p class="tagline">Tab add-on · add to balance</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="handoff-callout">
+        <strong>Canonical path for incidental extras</strong>
+        Tab charges add to balance. No keep-length / keep-payment wizard. Funded fixed loans are not pile-on-rebalanced — use this tab, or <a href="propose.html">propose a new fixed</a> for a real new purpose.
+      </div>
+
+      <div class="box">
+        <div class="title">+$65 · groceries</div>
+        <div class="meta">From Mom’s note / receipt. Adds to the open tab balance.</div>
+      </div>
+
+      <div class="field">
+        <label>Amount $</label>
+        <input type="number" id="add-amt" value="65" min="1" step="0.01" />
+      </div>
+      <div class="field">
+        <label>Optional note</label>
+        <input type="text" id="add-note" value="groceries" />
+      </div>
+
+      <div class="field radio">
+        <label>Preview yardstick (sample)</label>
+        <label class="opt"><input type="radio" name="prev" value="payment" checked /> Fixed payment
+          <span class="sub">Show weeks / payments left after add</span></label>
+        <label class="opt"><input type="radio" name="prev" value="date" /> Target date
+          <span class="sub">Show new payment to hit date</span></label>
+      </div>
+
+      <div class="box filled reveal is-open" id="panel-pay">
+        <div class="title">After +$65</div>
+        <div class="row"><span class="k">Balance</span><span class="v">$180 → <strong>$245</strong></span></div>
+        <div class="row"><span class="k">Payment</span><span class="v">stays $50</span></div>
+        <div class="row"><span class="k">Left</span><span class="v">~4 → <strong>~5 payments</strong></span></div>
+        <p class="hint">Duration extends · no rebalance choice.</p>
+      </div>
+
+      <div class="box filled reveal" id="panel-date">
+        <div class="title">After +$65</div>
+        <div class="row"><span class="k">Balance</span><span class="v">$180 → <strong>$245</strong></span></div>
+        <div class="row"><span class="k">Target</span><span class="v">stays Mar 1, 2027</span></div>
+        <div class="row"><span class="k">Payment</span><span class="v">$42 → <strong>$57</strong> to hit date</span></div>
+        <p class="hint">Payment recalcs · I can reset or clear the date later.</p>
+      </div>
+
+      <a class="btn" href="tab-addon-confirm.html" id="send-accept">Send to Alex to accept</a>
+      <a class="btn secondary" href="tab-active.html">Cancel</a>
+      <p class="note">Alex gets a handoff SMS → accept page. Fixed pile-on is <a href="pile-on.html">deprecated</a> — extras live here.</p>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="tab-addon-confirm.html">Alex confirm →</a> · <a href="propose.html">New fixed loan</a> · <a href="pile-on.html">Deprecated pile-on</a>
+  </nav>
+  <script>
+    function syncPrev() {
+      const v = document.querySelector('input[name="prev"]:checked').value;
+      document.getElementById('panel-pay').classList.toggle('is-open', v === 'payment');
+      document.getElementById('panel-date').classList.toggle('is-open', v === 'date');
+    }
+    document.querySelectorAll('input[name="prev"]').forEach(el => el.addEventListener('change', syncPrev));
+    syncPrev();
+    document.getElementById('send-accept').addEventListener('click', function(e) {
+      e.preventDefault();
+      const v = document.querySelector('input[name="prev"]:checked').value;
+      location.href = 'tab-addon-confirm.html?yard=' + encodeURIComponent(v);
+    });
+  </script>
+</body>
+</html>

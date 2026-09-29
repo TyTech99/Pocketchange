@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Clarify (one fork)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Screen 9 · Clarify</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · outbound</span>
+      <span class="arrow">SMS → web</span>
+    </div>
+    <div class="msg">
+      Got $150 from my forward. Apply how?
+      <div class="taps">
+        <a class="tap" href="confirm-toast.html">Same as last</a>
+        <a class="tap" href="confirm-toast.html">All to Boat</a>
+        <a class="tap" href="#web">Open</a>
+      </div>
+    </div>
+    <p class="meta-line">ONE fork only · if ignored → pending in notebook · never chase</p>
+  </div>
+
+  <div class="phone" id="web">
+    <div class="topbar">
+      <a class="back" href="active.html">← Boat</a>
+      <h1>Apply payment</h1>
+      <p class="tagline">One-fork clarify · not a wizard</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="handoff-callout">
+        <strong>SMS / MMS → web</strong>
+        Arrived via tap on clarify SMS, or “Open” link. Complex split work happens here — never as an SMS thread.
+      </div>
+
+      <div class="box filled">
+        <div class="title">Got $150 from my forward</div>
+        <div class="meta">Apply how? Multi-loan same counterparty. Tap = one choice.</div>
+      </div>
+
+      <div class="field radio" id="clarify-opts">
+        <label class="opt"><input type="radio" name="apply" value="same" checked /> Same as last time
+          <span class="sub">$100 Motorcycle · $50 Boat</span></label>
+        <label class="opt"><input type="radio" name="apply" value="boat" /> All to Boat</label>
+        <label class="opt"><input type="radio" name="apply" value="overpay" /> Boat due + rest to Household tab
+          <span class="sub">Overpay on fixed · default tab credit when tab exists</span></label>
+        <label class="opt"><input type="radio" name="apply" value="split" /> Split differently…
+          <span class="sub">Amount fields appear below</span></label>
+        <label class="opt"><input type="radio" name="apply" value="not" /> Not a loan payment</label>
+      </div>
+
+      <div class="reveal" id="overpay-preview">
+        <div class="box filled">
+          <div class="title">Overpay → tab credit (default)</div>
+          <div class="row"><span class="k">Boat due</span><span class="v">$43.87</span></div>
+          <div class="row"><span class="k">To Household tab</span><span class="v"><strong>$106.13</strong></span></div>
+          <p class="hint">When a running tab exists with Mom, overpay on a fixed loan defaults here.</p>
+        </div>
+      </div>
+
+      <div class="reveal" id="split-fields">
+        <div class="field">
+          <label>Motorcycle $</label>
+          <input type="number" id="split-moto" value="75" min="0" step="1" />
+        </div>
+        <div class="field">
+          <label>Boat $</label>
+          <input type="number" id="split-boat" value="75" min="0" step="1" />
+        </div>
+        <p class="hint" id="split-hint">Must add up to $150</p>
+      </div>
+
+      <div class="reveal" id="not-note">
+        <div class="field">
+          <label>Optional note</label>
+          <input type="text" placeholder="e.g. birthday gift, not a repayment" />
+        </div>
+      </div>
+
+      <a class="btn" href="confirm-toast.html" id="confirm-btn">Confirm</a>
+      <a class="btn secondary" href="active.html">Cancel</a>
+      <p class="note">Ambiguous payment: at most ONE clarify ping. Second unclear free-text → stop texting, flag in-app.</p>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="active.html">← Active</a> · <a href="confirm-toast.html">Dual-notify →</a> · <a href="sms-templates.html">Templates</a>
+  </nav>
+  <script>
+    function syncApply() {
+      const v = document.querySelector('input[name="apply"]:checked').value;
+      document.getElementById('split-fields').classList.toggle('is-open', v === 'split');
+      document.getElementById('not-note').classList.toggle('is-open', v === 'not');
+      const op = document.getElementById('overpay-preview');
+      if (op) op.classList.toggle('is-open', v === 'overpay');
+    }
+    document.querySelectorAll('input[name="apply"]').forEach(el => el.addEventListener('change', syncApply));
+    syncApply();
+  </script>
+</body>
+</html>

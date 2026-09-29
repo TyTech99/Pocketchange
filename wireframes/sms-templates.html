@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — SMS POR</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · SMS POR</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="map.html">← Map</a>
+      <h1>SMS plan of record</h1>
+      <p class="tagline">Doorbell + one fork · link does the work</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family · we never touch your money.</p>
+
+      <div class="sms-rule">
+        <strong>POR</strong>
+        One outbound SMS does at most one of: alert · handoff link · binary fork (prefer taps) · confirm what already happened. Heavy work and terms live on the page (or email). Prefer <code>payment@</code> for receipt forwards.
+      </div>
+
+      <div class="tpl-grid">
+        <div class="tpl ok">
+          <span class="badge">1 · invite</span>
+          <div class="kind">Soft invite</div>
+          <div class="body">Ty wants to set up a friends &amp; family loan tracker with you on PLT. Not a bill. Not a charge. We never touch money. Open only if you know them: plt.io/i/…</div>
+          <div class="why">Amount hidden until open → invite web.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">2 · OTP</span>
+          <div class="kind">Verify</div>
+          <div class="body">PLT code: 482917. Enter it on the page. Never share this code.</div>
+          <div class="why">Code only → otp / continue on web.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">3 · handoff</span>
+          <div class="kind">Agree / request change</div>
+          <div class="body">Boat terms ready. Open to agree or request a change: plt.io/a/…</div>
+          <div class="why">Link only — terms on agree page.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">4 · funding</span>
+          <div class="kind">Pending funding / funded</div>
+          <div class="body">Boat agreed — waiting on Ty to fund. Open: plt.io/p/…</div>
+          <div class="body">Boat funded. Reminders start. Open loan: plt.io/l/…</div>
+          <div class="why">One-liner + link.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">5 · confirm</span>
+          <div class="kind">Payment applied (both)</div>
+          <div class="body">Boat: $50 applied · $420 left</div>
+          <div class="why">Confirm only — no ask.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">6 · one fork</span>
+          <div class="kind">Ambiguous payment</div>
+          <div class="body">Got $150. Apply how?<br />[ Same as last ] [ All to Boat ] [ Open ]</div>
+          <div class="why">One SMS · taps or clarify page. If ignored → pending in notebook.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">7 · handoff</span>
+          <div class="kind">Tab add-on / late / pause / dispute</div>
+          <div class="body">Mom wants to add $65 to Household tab (groceries). Open: plt.io/ta/…</div>
+          <div class="why">Link only — extras → tab add-on (or propose new fixed). No fixed pile-on rebalance.</div>
+        </div>
+        <div class="tpl bad">
+          <span class="badge">7x · DEPRECATED</span>
+          <div class="kind">Fixed pile-on (retired)</div>
+          <div class="body">~~Mom wants to add $200 to Boat (vet). Open to review: plt.io/o/…~~</div>
+          <div class="why">Out of MVP — funded fixed stays the contract. Use tab add-on or propose a new fixed loan.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">3b · handoff</span>
+          <div class="kind">Agree tab</div>
+          <div class="body">Household tab terms ready. Open to agree or request a change: plt.io/a/…</div>
+          <div class="why">Link only — first charge creates balance.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">6b · one fork</span>
+          <div class="kind">Overpay → tab credit</div>
+          <div class="body">Got $150. Boat due is $43.87 — rest to Household tab?<br />[ Yes · tab credit ] [ All to Boat ] [ Open ]</div>
+          <div class="why">When tab exists with same pair · default overpay on fixed → tab credit.</div>
+        </div>
+
+        <div class="tpl ok">
+          <span class="badge">8 · due</span>
+          <div class="kind">Reminders (−3 / due / +3)</div>
+          <div class="body">Boat due Fri · $43.87. Open loan: plt.io/l/…</div>
+          <div class="why">One-liner + optional open link.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">8b · late-fee eve</span>
+          <div class="kind">Last day before late fee (if unpaid)</div>
+          <div class="body">Boat · last day before a $15 late fee (if still unpaid). Open: plt.io/l/…</div>
+          <p class="meta-line">Only when contracted late fee &gt; $0 · Right away / After grace (Decide: discretionary)</p>
+          <div class="why">One-liner + optional open link.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">9 · receipt</span>
+          <div class="kind">Receipt forward ack</div>
+          <div class="body">Got your receipt · applying to Boat. You’ll get a confirm shortly.</div>
+          <div class="why">Prefer payment@ · MMS/SMS same parser → confirm or one clarify.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">10 · fork</span>
+          <div class="kind">Same as last time?</div>
+          <div class="body">Same as last time? ($100 Motorcycle · $50 Boat)<br />[ Yes ] [ No — open ]</div>
+          <div class="why">One fork with taps.</div>
+        </div>
+        <div class="tpl ok">
+          <span class="badge">11 · ack</span>
+          <div class="kind">Inbound free-text</div>
+          <div class="body">Got it. Open to tell us: plt.io/…</div>
+          <div class="why">One ack with link · second unclear → flag in-app, stop texting.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Related</strong>
+    <a href="handoff.html">Handoff map →</a>
+    <a href="clarify.html">Clarify</a>
+    <a href="tab-addon.html">Tab add-on</a>
+    <a href="tab-active.html">Tab active</a>
+    <a href="invite-preview.html">Invite SMS</a>
+    <a href="confirm-toast.html">Dual-confirm</a>
+  </nav>
+</body>
+</html>

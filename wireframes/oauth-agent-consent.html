@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — OAuth agent consent</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · OAuth agent · consent</span>
+    <a href="oauth-agent.html">OAuth agent flow</a>
+  </div>
+
+  <div class="oauth-strip">
+    <div class="strip-label">
+      <span>OAuth 2.1 · Authorization Code + PKCE (S256)</span>
+      <span>act-as-user</span>
+    </div>
+    <div><strong>Agent client</strong> wants to act as <strong>Ty</strong> on Personal Loan Tracker.</div>
+    <div class="scopes">
+      <span class="scope">loans:propose</span>
+      <span class="scope">loans:agree</span>
+      <span class="scope">payments:propose</span>
+      <span class="scope">loans:read</span>
+      <span class="scope">payments:read</span>
+    </div>
+    <p class="audit-note">Every action is logged via-agent (actor=agent-client, subject=Ty). Revoke anytime. No money:move scope exists.</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="oauth-agent.html">← OAuth agent flow</a>
+      <h1>Authorize agent client</h1>
+      <p class="tagline">Delegated agent · not impersonation</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="agent-persona">
+        <div class="who">Client</div>
+        <div class="name">Agent client <span class="via-badge agent">agent</span></div>
+        <div style="font-size:12px;color:#666;margin-top:4px">client_id · agent_client · token_use · delegated_agent</div>
+      </div>
+
+      <div class="box">
+        <div class="title">What the agent can do for me</div>
+        <div class="row"><span class="k">Propose</span><span class="v">Draft loans / tab add-ons as Ty</span></div>
+        <div class="row"><span class="k">Agree</span><span class="v">Submit <em>my</em> agree (not Mom’s)</span></div>
+        <div class="row"><span class="k">Payments</span><span class="v">Submit receipt / apply intents</span></div>
+        <div class="row"><span class="k">Read</span><span class="v">Loans &amp; ledger visible to me</span></div>
+      </div>
+
+      <div class="box filled">
+        <div class="title">What The agent cannot do</div>
+        <div class="meta">
+          Consent for Mom · move / hold / route money · skip mutual agree · hide as a third party · use a caller-supplied user id
+        </div>
+      </div>
+
+      <div class="soft-callout">
+        <strong>Via-agent audit</strong>
+        Each read/mutation appends actor_type=agent, actor_id=agent-client, subject_user_id=Ty, via_agent=true, scopes used. Visible to me; The agent cannot edit it.
+      </div>
+
+      <a class="btn" href="oauth-agent-draft.html">Allow · continue as Ty</a>
+      <a class="btn secondary" href="oauth-agent.html">Deny</a>
+      <p class="note mt">PKCE challenge required. Short-lived access token. Refresh rotates; revoke kills the grant.</p>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>OAuth agent spine</strong>
+    <a href="oauth-agent.html">Flow</a> · <a href="oauth-agent-draft.html">Draft →</a>
+  </nav>
+</body>
+</html>

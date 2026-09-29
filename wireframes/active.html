@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Active loan hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Screen 8 · Active hub</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · payment confirm (both)</span>
+      <span class="arrow">confirm only · no ask</span>
+    </div>
+    <div class="msg">Boat: $50 applied · $420 left</div>
+    <p class="meta-line">Dual-notify one-liner · no WRONG chase in SMS · due reminder example below</p>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · due reminder (−3 / due / +3)</span>
+      <span class="arrow">alert + optional link</span>
+    </div>
+    <div class="msg">Boat due Fri · $43.87. Open loan: <a href="active.html">plt.io/l/…</a></div>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="index.html">← My loans</a>
+      <h1>Boat · with Mom</h1>
+      <p class="tagline">Nickname visible · active</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="box filled">
+        <div class="row"><span class="k">Remaining</span><span class="v big">$912.40</span></div>
+        <div class="row"><span class="k">Next due Sun</span><span class="v">$43.87</span></div>
+        <span class="status active">● Active</span>
+      </div>
+
+      <div class="box">
+        <div class="title">How to log a payment</div>
+        <div class="meta">Forward a receipt — PLT never moves funds. Prefer email.</div>
+        <p class="mt"><strong>Email (preferred)</strong></p>
+        <div class="payment-rail">payment@personalloantracker.io</div>
+        <p class="mt"><strong>or MMS / SMS forward</strong></p>
+        <div class="payment-rail">(555) 010-0100</div>
+        <p class="hint mt">Tip: put “Boat” in the memo / subject. Same parser → confirm SMS or one clarify.</p>
+        <p class="hint">Overpay on this fixed loan → defaults to <strong>Household tab</strong> credit when a tab with Mom exists.</p>
+      </div>
+
+      <div class="box">
+        <div class="title">Ledger</div>
+        <div class="ledger">
+          <div class="entry"><span>Oct 1 · Payment</span><span class="amt neg">−$43.87</span></div>
+          <div class="entry"><span>Sep 1 · Payment</span><span class="amt neg">−$43.87</span></div>
+          <div class="entry"><span>Aug 12 · Funded</span><span class="amt">$1,000.00</span></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn" href="clarify.html">I paid</a>
+        <a class="btn secondary" href="pause.html">Pause</a>
+      </div>
+
+      <div class="handoff-callout">
+        <strong>Extras after Funded</strong>
+        Fixed stays the agreed contract — no pile-on rebalance. Incidental extras → Household tab. Real new purpose → propose a new fixed loan.
+      </div>
+      <a class="btn ghost" href="tab-addon.html">Add to Household tab</a>
+      <a class="btn ghost" href="propose.html">Propose a new fixed loan</a>
+      <a class="btn ghost" href="history.html">Full history</a>
+
+      <div class="box">
+        <span class="wf-label">My extras as lender (when prompted)</span>
+        <div class="btn-row">
+          <a class="btn secondary" href="active.html">Got it</a>
+          <a class="btn secondary" href="active.html">Not yet</a>
+        </div>
+        <div class="btn-row mt">
+          <a class="btn ghost" href="active.html">Grace</a>
+          <a class="btn ghost" href="active.html">Apply late</a>
+        </div>
+        <p class="note mt">Late / grace decisions: SMS handoff link → this hub (or dedicated page). Not a text Q&amp;A.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="clarify.html">Clarify →</a> · <a href="tab-addon.html">Tab add-on →</a> · <a href="propose.html">New fixed →</a> · <a href="confirm-toast.html">Confirm SMS</a> · <a href="sms-templates.html">Templates</a>
+  </nav>
+</body>
+</html>

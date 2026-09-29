@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Propose</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Screen 2 · Wizard</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="index.html">← My loans</a>
+      <h1>Propose a loan</h1>
+      <p class="tagline">Friends &amp; family · we never touch money</p>
+    </div>
+    <div class="content">
+      <div class="progress" id="dots" aria-hidden="true"></div>
+
+      <div class="handoff-callout">
+        <strong>Not sent as SMS body · web only</strong>
+        Propose wizard lives here. SMS later is invite doorbell (link only) — never this multi-step form over text.
+      </div>
+
+      <!-- 2a Who -->
+      <div class="step active" data-sid="who">
+
+        <span class="wf-label">2a · Who</span>
+        <div class="field radio">
+          <label class="opt"><input type="radio" name="role" value="lender" checked /> I’m the lender
+            <span class="sub">They’re borrowing from me</span></label>
+          <label class="opt"><input type="radio" name="role" value="borrower" /> I’m the borrower
+            <span class="sub">I’m borrowing from them</span></label>
+        </div>
+        <div class="field"><label id="lbl-their-name">Borrower’s name</label><input id="their-name" value="Mom" /></div>
+        <div class="field"><label id="lbl-their-phone">Borrower’s phone *</label><input type="tel" value="(555) 010-2000" /></div>
+        <div class="field">
+          <label id="lbl-their-email">Borrower’s email * (ripcord)</label>
+          <input type="email" value="mom@example.com" />
+          <p class="hint" id="hint-their-email">Email keeps the loan if Mom’s number changes</p>
+        </div>
+        <div class="field"><label id="lbl-my-phone">My phone *</label><input type="tel" value="(555) 010-1000" /></div>
+        <div class="field"><label id="lbl-my-email">My email *</label><input type="email" value="ty@example.com" /></div>
+        <button type="button" class="btn" data-next>Next →</button>
+      
+      </div>
+
+      <!-- 2b Kind fork — locked Ty 2026-09-26 -->
+      <div class="step" data-sid="kind">
+        <span class="wf-label">2b · Running tab or fixed-purpose?</span>
+        <div class="field radio">
+          <label>What am I setting up?</label>
+          <label class="opt"><input type="radio" name="kind" value="tab" /> Running tab
+            <span class="sub">Open balance between us · first charge creates it · one active tab per pair</span></label>
+          <label class="opt"><input type="radio" name="kind" value="fixed" checked /> Fixed-purpose loan
+            <span class="sub">Named principal + schedule (Boat, Car…) · stays the contract after Funded · extras → tab or new loan</span></label>
+        </div>
+        <div class="soft-callout">
+          <strong>High fork</strong>
+          Tab skips the full fixed schedule. Fixed keeps principal + schedule UX. Optional Note on both — edit needs mutual re-agree.
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn secondary" data-prev>← Back</button>
+          <button type="button" class="btn" data-next>Next →</button>
+        </div>
+      </div>
+
+      <!-- 2c Tab setup -->
+      <div class="step" data-sid="tab-setup">
+        <span class="wf-label">2c · Tab setup</span>
+        <div class="soft-callout">
+          <strong>Tab rules</strong>
+          First charge creates the balance (starts at $0). One active tab per pair (me ↔ other). No principal upfront.
+        </div>
+        <div class="field"><label>Tab nickname *</label><input id="tab-nick" value="Household tab" /></div>
+        <div class="field radio">
+          <label>Yardstick (pick one)</label>
+          <label class="opt"><input type="radio" name="yard" value="date" checked /> Target date
+            <span class="sub">We recalc payment to hit the date · I can reset or clear the date later (as lender)</span></label>
+          <label class="opt"><input type="radio" name="yard" value="payment" /> Fixed payment
+            <span class="sub">Duration extends when we add charges · I can reset $ later (as lender)</span></label>
+        </div>
+        <div class="field reveal is-open" id="yard-date-fields">
+          <label>Target payoff date</label>
+          <input type="date" id="tab-target-date" value="2027-03-01" />
+          <p class="hint">Payment sized to hit this date from current balance (after first charge).</p>
+        </div>
+        <div class="field reveal" id="yard-pay-fields">
+          <label>$ per payment</label>
+          <input type="number" id="tab-pay-amount" value="50" min="1" step="0.01" />
+          <p class="hint">New charges extend how long it takes — payment $ stays until I reset it.</p>
+        </div>
+        <div class="field radio">
+          <label>Reminder cadence</label>
+          <label class="opt"><input type="radio" name="tab-freq" value="weekly" /> Weekly</label>
+          <label class="opt"><input type="radio" name="tab-freq" value="monthly" checked /> Monthly</label>
+          <label class="opt"><input type="radio" name="tab-freq" value="semimonthly" /> Twice a month</label>
+        </div>
+        <div class="box filled" id="tab-preview">
+          <div class="meta">Tab preview</div>
+          <div class="big" id="tab-preview-line" style="font-size:15px;line-height:1.35">Target Mar 1, 2027 · payment recalcs after first charge</div>
+          <div class="meta" id="tab-preview-meta">Balance $0 until first charge · one tab with Mom</div>
+        </div>
+        <div class="field">
+          <label>Optional Note <span class="sub">(both see · edit = mutual re-agree)</span></label>
+          <textarea id="tab-note" rows="2" placeholder="e.g. groceries + kids stuff we cover for each other"></textarea>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn secondary" data-prev>← Back</button>
+          <button type="button" class="btn" data-next>Next →</button>
+        </div>
+      </div>
+
+      <!-- 2c Fixed money -->
+      <div class="step" data-sid="money">
+
+        <span class="wf-label">2c · Nickname &amp; money · fixed</span>
+        <div class="field"><label>Loan nickname *</label><input id="nick" value="Boat" /></div>
+        <div class="field"><label>Principal $</label><input type="number" id="principal" value="1000" /></div>
+        <div class="field radio">
+          <label>Pricing</label>
+          <label class="opt"><input type="radio" name="price" id="price-none" value="none" checked /> No fee
+            <span class="sub">$0 · borrow = payback (F&amp;F default)</span></label>
+          <label class="opt"><input type="radio" name="price" id="price-flat" value="flat" /> Flat fee
+            <span class="sub">Add a one-time fee $</span></label>
+          <label class="opt"><input type="radio" name="price" id="price-install" value="install" /> Installment %
+            <span class="sub">Annual rate · term → payment + est. total</span></label>
+        </div>
+        <div class="field reveal" id="flat-fee-fields">
+          <label>Flat fee $ <span class="sub">(configurable)</span></label>
+          <input type="number" id="flat-fee" value="50" min="0" step="1" />
+        </div>
+        <div class="field reveal" id="install-fields">
+          <label>Annual interest %</label>
+          <input type="number" id="apr" value="5" min="0" step="0.1" />
+        </div>
+        <div class="box filled" id="price-preview">
+          <div class="meta">Plain-language preview</div>
+          <div class="big" id="preview-big">$1,000 <span style="font-size:13px;font-weight:500">pay back</span></div>
+          <div class="meta" id="preview-meta">Borrow $1,000 → pay back $1,000 · no fee</div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn secondary" data-prev>← Back</button>
+          <button type="button" class="btn" data-next>Next →</button>
+        </div>
+      
+      </div>
+
+      <!-- 2d Fixed schedule -->
+      <div class="step" data-sid="schedule">
+
+        <span class="wf-label">2d · Schedule · fixed</span>
+
+        <div class="field radio">
+          <label>How do I want to define the loan?</label>
+          <label class="opt"><input type="radio" name="define" value="months" checked /> A · Length of time (months)
+            <span class="sub">Pick how long · we size each payment</span></label>
+          <label class="opt"><input type="radio" name="define" value="payment" /> B · Payment amount ($ per payment)
+            <span class="sub">Pick what I can pay · months derived in preview</span></label>
+        </div>
+
+        <div class="field reveal is-open" id="define-months-fields">
+          <label>Length (months)</label>
+          <input type="number" id="loan-months" value="24" min="1" step="1" />
+        </div>
+        <div class="field reveal" id="define-payment-fields">
+          <label>$ per payment</label>
+          <input type="number" id="pay-amount" value="50" min="1" step="0.01" />
+        </div>
+
+        <div class="field radio">
+          <label>Frequency</label>
+          <label class="opt"><input type="radio" name="freq" value="weekly" /> Weekly</label>
+          <label class="opt"><input type="radio" name="freq" value="monthly" checked /> Monthly</label>
+          <label class="opt"><input type="radio" name="freq" value="semimonthly" /> Twice a month</label>
+        </div>
+
+        <!-- On: Weekly — interval + weekday chips -->
+        <div class="field reveal" id="on-weekday">
+          <label>On</label>
+          <div class="chip-row mode-row" role="radiogroup" aria-label="Weekly interval">
+            <label class="chip"><input type="radio" name="weekly-interval" value="every" checked /><span>Every week</span></label>
+            <label class="chip"><input type="radio" name="weekly-interval" value="every-2" /><span>Every 2 weeks</span></label>
+          </div>
+          <label class="sub-label" style="margin-top:10px">Weekday</label>
+          <div class="chip-row" role="radiogroup" aria-label="Weekday">
+            <label class="chip"><input type="radio" name="weekday" value="mon" /><span>Mon</span></label>
+            <label class="chip"><input type="radio" name="weekday" value="tue" /><span>Tue</span></label>
+            <label class="chip"><input type="radio" name="weekday" value="wed" /><span>Wed</span></label>
+            <label class="chip"><input type="radio" name="weekday" value="thu" /><span>Thu</span></label>
+            <label class="chip"><input type="radio" name="weekday" value="fri" checked /><span>Fri</span></label>
+            <label class="chip"><input type="radio" name="weekday" value="sat" /><span>Sat</span></label>
+            <label class="chip"><input type="radio" name="weekday" value="sun" /><span>Sun</span></label>
+          </div>
+        </div>
+
+        <!-- On: Monthly — Day of month (default) XOR Nth weekday -->
+        <div class="field reveal is-open" id="on-monthly">
+          <label>On</label>
+          <div class="chip-row mode-row" role="radiogroup" aria-label="Monthly On mode">
+            <label class="chip"><input type="radio" name="monthly-mode" value="dates" checked /><span>Day of month</span></label>
+            <label class="chip"><input type="radio" name="monthly-mode" value="nth" /><span>Nth weekday</span></label>
+          </div>
+
+          <div class="field reveal is-open nested" id="monthly-dates-fields">
+            <div class="chip-row" role="radiogroup" aria-label="Day of month">
+              <label class="chip"><input type="radio" name="monthday" value="1" /><span>1st</span></label>
+              <label class="chip"><input type="radio" name="monthday" value="15" checked /><span>15th</span></label>
+              <label class="chip"><input type="radio" name="monthday" value="last" /><span>Last day</span></label>
+              <label class="chip"><input type="radio" name="monthday" value="other" /><span>Other…</span></label>
+            </div>
+            <div class="field reveal" id="monthday-other-fields" style="margin-top:8px;margin-bottom:0">
+              <label>Day of month (1–28)</label>
+              <input type="number" id="monthday-other" value="10" min="1" max="28" step="1" />
+            </div>
+          </div>
+
+          <div class="field reveal nested" id="monthly-nth-fields">
+            <label class="sub-label">Weekday</label>
+            <div class="chip-row" role="radiogroup" aria-label="Monthly weekday">
+              <label class="chip"><input type="radio" name="monthly-weekday" value="mon" /><span>Mon</span></label>
+              <label class="chip"><input type="radio" name="monthly-weekday" value="tue" /><span>Tue</span></label>
+              <label class="chip"><input type="radio" name="monthly-weekday" value="wed" /><span>Wed</span></label>
+              <label class="chip"><input type="radio" name="monthly-weekday" value="thu" /><span>Thu</span></label>
+              <label class="chip"><input type="radio" name="monthly-weekday" value="fri" checked /><span>Fri</span></label>
+              <label class="chip"><input type="radio" name="monthly-weekday" value="sat" /><span>Sat</span></label>
+              <label class="chip"><input type="radio" name="monthly-weekday" value="sun" /><span>Sun</span></label>
+            </div>
+            <label class="sub-label" style="margin-top:10px">Which</label>
+            <div class="chip-row" role="radiogroup" aria-label="Which weekday in month">
+              <label class="chip"><input type="radio" name="monthly-nth" value="1" /><span>1st</span></label>
+              <label class="chip"><input type="radio" name="monthly-nth" value="2" /><span>2nd</span></label>
+              <label class="chip"><input type="radio" name="monthly-nth" value="3" checked /><span>3rd</span></label>
+              <label class="chip"><input type="radio" name="monthly-nth" value="4" /><span>4th</span></label>
+              <label class="chip"><input type="radio" name="monthly-nth" value="last" /><span>Last</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- On: Twice a month — 2 modes only (biweekly lives under Weekly interval) -->
+        <div class="field reveal" id="on-semimonthly">
+          <label>On</label>
+          <div class="chip-row mode-row stack" role="radiogroup" aria-label="Twice a month On mode">
+            <label class="chip"><input type="radio" name="semi-mode" value="dates" checked /><span>Same two dates each month</span></label>
+            <label class="chip"><input type="radio" name="semi-mode" value="weekdays" /><span>Same two weekdays each month</span></label>
+          </div>
+
+          <div class="field reveal is-open nested" id="semi-dates-fields">
+            <div class="dual-dates">
+              <div>
+                <label class="sub-label">First</label>
+                <input type="number" id="semi-a" value="1" min="1" max="28" step="1" />
+              </div>
+              <div>
+                <label class="sub-label">Second</label>
+                <input type="number" id="semi-b" value="15" min="1" max="28" step="1" />
+              </div>
+            </div>
+            <p class="hint">Defaults 1st &amp; 15th</p>
+          </div>
+
+          <div class="field reveal nested" id="semi-weekdays-fields">
+            <label class="sub-label">Weekday</label>
+            <div class="chip-row" role="radiogroup" aria-label="Twice-a-month weekday">
+              <label class="chip"><input type="radio" name="semi-weekday" value="mon" /><span>Mon</span></label>
+              <label class="chip"><input type="radio" name="semi-weekday" value="tue" /><span>Tue</span></label>
+              <label class="chip"><input type="radio" name="semi-weekday" value="wed" /><span>Wed</span></label>
+              <label class="chip"><input type="radio" name="semi-weekday" value="thu" /><span>Thu</span></label>
+              <label class="chip"><input type="radio" name="semi-weekday" value="fri" checked /><span>Fri</span></label>
+              <label class="chip"><input type="radio" name="semi-weekday" value="sat" /><span>Sat</span></label>
+              <label class="chip"><input type="radio" name="semi-weekday" value="sun" /><span>Sun</span></label>
+            </div>
+            <label class="sub-label" style="margin-top:10px">Which</label>
+            <div class="chip-row" role="radiogroup" aria-label="Which weekdays in month">
+              <label class="chip"><input type="radio" name="semi-nth-pair" value="1-3" checked /><span>1st &amp; 3rd</span></label>
+              <label class="chip"><input type="radio" name="semi-nth-pair" value="2-4" /><span>2nd &amp; 4th</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="box filled" id="sched-preview">
+          <div class="meta">Schedule preview</div>
+          <div class="big" id="sched-preview-line" style="font-size:15px;line-height:1.35">Monthly · On the 15th · 24 months</div>
+          <div class="meta" id="sched-preview-meta">First due after funded · next matching day</div>
+        </div>
+
+        <div class="field">
+          <label>First due</label>
+          <input type="text" id="first-due" value="After funded · next matching day" />
+          <p class="hint">Clock starts only when lender marks funded · optional exact date OK if known</p>
+        </div>
+        <div class="field">
+          <label>First due date <span class="sub">(optional)</span></label>
+          <input type="date" id="first-due-date" />
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn secondary" data-prev>← Back</button>
+          <button type="button" class="btn" data-next>Next →</button>
+        </div>
+      
+      </div>
+
+      <!-- 2e Late & trust -->
+      <div class="step" data-sid="late">
+
+        <span class="wf-label">2e · Late &amp; trust</span>
+
+        <div class="field radio">
+          <label>Late fee $</label>
+          <label class="opt"><input type="radio" name="fee" value="0" /> $0
+            <span class="sub">No late fee</span></label>
+          <label class="opt"><input type="radio" name="fee" value="15" checked /> $15</label>
+          <label class="opt"><input type="radio" name="fee" value="25" /> $25</label>
+          <label class="opt"><input type="radio" name="fee" value="custom" /> Custom…</label>
+          <p class="hint">$0 = no late fee</p>
+        </div>
+        <div class="field reveal" id="custom-fee-fields">
+          <label>Custom late fee $</label>
+          <input type="number" id="custom-fee" value="20" min="0" step="1" />
+          <p class="hint">$0 = no late fee</p>
+        </div>
+
+        <div class="field radio reveal" id="late-timing-fields">
+          <label id="late-timing-label">If Mom is late…</label>
+          <label class="opt"><input type="radio" name="late" value="right" /> Right away
+            <span class="sub">Fee posts as soon as it’s late</span></label>
+          <label class="opt"><input type="radio" name="late" value="grace" checked /> After a grace period
+            <span class="sub">Wait N days, then fee</span></label>
+          <label class="opt"><input type="radio" name="late" value="decide" />
+            <span id="late-decide-label">I’ll decide</span>
+            <span class="sub" id="late-decide-sub">whether to add the late fee</span></label>
+        </div>
+        <div class="field reveal" id="grace-days-fields">
+          <label>Wait (days)</label>
+          <input type="number" id="grace-days" value="10" min="1" step="1" />
+          <p class="hint">Days after due before the late fee applies</p>
+        </div>
+
+        <div class="soft-callout reveal" id="late-reminder-note" aria-live="polite">
+          <strong id="late-reminder-title">Mom gets a reminder</strong>
+          <span id="late-reminder-copy">Last day before a late fee would apply (if still unpaid).</span>
+        </div>
+
+        <div class="field radio">
+          <label id="receipt-timing-label">When Mom sends a payment receipt</label>
+          <label class="opt"><input type="radio" name="trust" value="immediate" checked />
+            <span id="trust-immediate-label">Count as paid right away</span>
+            <span class="sub">Receipt from known channel</span></label>
+          <label class="opt"><input type="radio" name="trust" value="confirm" />
+            <span id="trust-confirm-label">Wait for me to confirm</span></label>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn secondary" data-prev>← Back</button>
+          <button type="button" class="btn" data-next>Next →</button>
+        </div>
+      
+      </div>
+
+      <!-- 2f Review -->
+      <div class="step" data-sid="review">
+        <span class="wf-label">2f · Review &amp; send</span>
+        <div class="box" id="review-card">
+          <div class="title" id="rev-nick">Boat</div>
+          <div class="meta" id="rev-meta">Me (lender) ↔ Mom (borrower)</div>
+          <div class="row" id="rev-kind-row"><span class="k">Kind</span><span class="v" id="rev-kind">Fixed-purpose loan</span></div>
+          <div class="row" id="rev-borrow-row"><span class="k">Borrow</span><span class="v" id="rev-borrow">$1,000.00</span></div>
+          <div class="row" id="rev-pricing-row"><span class="k" id="rev-pricing-k">Pay back</span><span class="v" id="rev-pricing-v">$1,000</span></div>
+          <div class="row" id="rev-yard-row" style="display:none"><span class="k">Yardstick</span><span class="v" id="rev-yard">Target date</span></div>
+          <div class="row"><span class="k">Schedule</span><span class="v" id="rev-sched">Monthly · On the 15th</span></div>
+          <div class="row" id="rev-payment-row"><span class="k">Payment</span><span class="v" id="rev-payment">$43.87</span></div>
+          <div class="row" id="rev-for-row"><span class="k">For</span><span class="v" id="rev-for">24 months</span></div>
+          <div class="row" id="rev-due-row"><span class="k">First due</span><span class="v" id="rev-due">After funded</span></div>
+          <div class="row" id="rev-fee-row"><span class="k">Pricing</span><span class="v" id="rev-fee">No fee · borrow = payback</span></div>
+          <div class="row"><span class="k">Late</span><span class="v" id="rev-late">Wait 10 days, then $15</span></div>
+          <div class="row"><span class="k">Receipts</span><span class="v" id="rev-trust">Count as paid right away</span></div>
+          <div class="row" id="rev-note-row"><span class="k">Note</span><span class="v" id="rev-note">—</span></div>
+        </div>
+        <div class="field reveal is-open" id="fixed-note-fields">
+          <label>Optional Note <span class="sub">(both see · edit = mutual re-agree)</span></label>
+          <textarea id="fixed-note" rows="2" placeholder="e.g. for the boat motor repair"></textarea>
+        </div>
+        <p class="hammer">F&amp;F tracker · not a lender · we never touch your money</p>
+        <div class="btn-row">
+          <button type="button" class="btn secondary" data-prev>← Back</button>
+          <a class="btn" href="otp.html" id="send-invite">Send invite</a>
+        </div>
+        <p class="note">Send invite → drafter OTP if not verified · Tab → <a href="agree-tab.html">agree-tab sample</a> · Fixed → <a href="agree.html">agree</a></p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="index.html">Home</a> · <a href="otp.html">OTP next →</a> · <a href="agree-tab.html">Agree tab</a> · <a href="tab-active.html">Tab active</a>
+  </nav>
+
+  <script>
+
+    /* —— Kind-aware step order (tab skips full fixed schedule) —— */
+    let sid = 'who';
+    function checked(name) {
+      const el = document.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : null;
+    }
+    function kind() { return checked('kind') || 'fixed'; }
+    function stepOrder() {
+      if (kind() === 'tab') return ['who', 'kind', 'tab-setup', 'late', 'review'];
+      return ['who', 'kind', 'money', 'schedule', 'late', 'review'];
+    }
+    function renderDots() {
+      const order = stepOrder();
+      const idx = Math.max(0, order.indexOf(sid));
+      const dots = document.getElementById('dots');
+      dots.innerHTML = order.map((_, i) =>
+        '<span class="' + (i <= idx ? 'on' : '') + '"></span>'
+      ).join('');
+    }
+    function showSid(next) {
+      const order = stepOrder();
+      if (!order.includes(next)) next = order[0];
+      sid = next;
+      document.querySelectorAll('.step').forEach(el => {
+        el.classList.toggle('active', el.dataset.sid === sid);
+      });
+      renderDots();
+      if (sid === 'review') updateReview();
+      if (sid === 'tab-setup') syncTabPreview();
+    }
+    function goNext() {
+      const order = stepOrder();
+      const i = order.indexOf(sid);
+      if (i < order.length - 1) showSid(order[i + 1]);
+    }
+    function goPrev() {
+      const order = stepOrder();
+      const i = order.indexOf(sid);
+      if (i > 0) showSid(order[i - 1]);
+    }
+    document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', goNext));
+    document.querySelectorAll('[data-prev]').forEach(b => b.addEventListener('click', goPrev));
+    document.querySelectorAll('input[name="kind"]').forEach(el => el.addEventListener('change', () => {
+      renderDots();
+      if (sid === 'review') updateReview();
+    }));
+
+    function money(n) {
+      return '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function setOpen(id, open) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('is-open', !!open);
+    }
+    function ordinal(n) {
+      const x = Number(n);
+      const s = ['th', 'st', 'nd', 'rd'];
+      const v = x % 100;
+      return x + (s[(v - 20) % 10] || s[v] || s[0]);
+    }
+
+    const WEEKDAY_FULL = {
+      mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', thu: 'Thursday',
+      fri: 'Friday', sat: 'Saturday', sun: 'Sunday'
+    };
+    const FREQ_LABEL = {
+      weekly: 'Weekly',
+      monthly: 'Monthly',
+      semimonthly: 'Twice a month'
+    };
+
+function underHood(freq) {
+      if (freq === 'weekly' && checked('weekly-interval') === 'every-2') return 'biweekly';
+      if (freq === 'weekly') return 'weekly';
+      if (freq === 'semimonthly') return 'semi-monthly';
+      return 'monthly';
+    }
+
+    function periodsPerMonth(freq) {
+      if (freq === 'weekly') {
+        if (checked('weekly-interval') === 'every-2') return 26 / 12;
+        return 52 / 12;
+      }
+      if (freq === 'semimonthly') return 2;
+      return 1;
+    }
+
+    function paymentCount() {
+      const define = checked('define');
+      const freq = checked('freq') || 'monthly';
+      const ppm = periodsPerMonth(freq);
+      if (define === 'payment') {
+        const principal = Number(document.getElementById('principal').value) || 0;
+        const pay = Number(document.getElementById('pay-amount').value) || 0;
+        if (pay <= 0) return 0;
+        return Math.max(1, Math.ceil(principal / pay));
+      }
+      const months = Number(document.getElementById('loan-months').value) || 24;
+      return Math.max(1, Math.round(months * ppm));
+    }
+
+    function derivedMonths() {
+      const define = checked('define');
+      const freq = checked('freq') || 'monthly';
+      if (define === 'months') {
+        return Number(document.getElementById('loan-months').value) || 24;
+      }
+      const n = paymentCount();
+      const ppm = periodsPerMonth(freq);
+      return Math.max(1, Math.round(n / ppm));
+    }
+
+    /* —— Pricing progressive disclosure + preview —— */
+    function syncPricing() {
+      const mode = checked('price');
+      setOpen('flat-fee-fields', mode === 'flat');
+      setOpen('install-fields', mode === 'install');
+      const principal = Number(document.getElementById('principal').value) || 0;
+      const flat = Number(document.getElementById('flat-fee').value) || 0;
+      const apr = Number(document.getElementById('apr').value) || 0;
+      const n = paymentCount() || 24;
+      const define = checked('define');
+      const big = document.getElementById('preview-big');
+      const meta = document.getElementById('preview-meta');
+      if (mode === 'none') {
+        big.innerHTML = money(principal) + ' <span style="font-size:13px;font-weight:500">pay back</span>';
+        meta.textContent = 'Borrow ' + money(principal) + ' → pay back ' + money(principal) + ' · no fee';
+      } else if (mode === 'flat') {
+        const total = principal + flat;
+        big.innerHTML = money(total) + ' <span style="font-size:13px;font-weight:500">pay back</span>';
+        meta.textContent = 'Borrow ' + money(principal) + ' + ' + money(flat) + ' fee → pay back ' + money(total);
+      } else if (define === 'payment') {
+        const pay = Number(document.getElementById('pay-amount').value) || 0;
+        const months = derivedMonths();
+        big.innerHTML = money(pay) + ' <span style="font-size:13px;font-weight:500">/ payment</span>';
+        meta.textContent = 'Fixed payment · ~' + months + ' months · ' + apr + '% APR est.';
+      } else {
+        const months = derivedMonths();
+        const interest = principal * (apr / 100) * (months / 12);
+        const total = principal + interest;
+        const per = n > 0 ? total / n : 0;
+        big.innerHTML = money(per) + ' <span style="font-size:13px;font-weight:500">/ period</span>';
+        meta.textContent = 'Est. total payback ' + money(total) + ' · ' + apr + '% APR · ' + months + ' months';
+      }
+    }
+    document.querySelectorAll('input[name="price"]').forEach(el => el.addEventListener('change', syncPricing));
+    ['principal', 'flat-fee', 'apr'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', syncPricing);
+    });
+
+    /* —— Define mode: months XOR payment $ —— */
+    function syncDefine() {
+      const mode = checked('define');
+      setOpen('define-months-fields', mode === 'months');
+      setOpen('define-payment-fields', mode === 'payment');
+      syncSchedPreview();
+      syncPricing();
+    }
+    document.querySelectorAll('input[name="define"]').forEach(el => el.addEventListener('change', syncDefine));
+    ['loan-months', 'pay-amount'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', () => { syncSchedPreview(); syncPricing(); });
+    });
+
+    /* —— Frequency → On: progressive disclosure —— */
+    function syncFreq() {
+      const freq = checked('freq');
+      setOpen('on-weekday', freq === 'weekly');
+      setOpen('on-monthly', freq === 'monthly');
+      setOpen('on-semimonthly', freq === 'semimonthly');
+      syncMonthlyMode();
+      syncSemiMode();
+      syncSchedPreview();
+      syncPricing();
+    }
+    document.querySelectorAll('input[name="freq"]').forEach(el => el.addEventListener('change', syncFreq));
+
+    function syncMonthlyMode() {
+      const mode = checked('monthly-mode') || 'dates';
+      setOpen('monthly-dates-fields', mode === 'dates');
+      setOpen('monthly-nth-fields', mode === 'nth');
+      syncMonthdayOther();
+    }
+    function syncSemiMode() {
+      const mode = checked('semi-mode') || 'dates';
+      setOpen('semi-dates-fields', mode === 'dates');
+      setOpen('semi-weekdays-fields', mode === 'weekdays');
+    }
+    function syncMonthdayOther() {
+      const datesOpen = checked('monthly-mode') !== 'nth';
+      setOpen('monthday-other-fields', datesOpen && checked('monthday') === 'other');
+    }
+    document.querySelectorAll('input[name="monthly-mode"]').forEach(el => el.addEventListener('change', () => {
+      syncMonthlyMode();
+      syncSchedPreview();
+    }));
+    document.querySelectorAll('input[name="semi-mode"]').forEach(el => el.addEventListener('change', () => {
+      syncSemiMode();
+      syncSchedPreview();
+      syncPricing();
+    }));
+    document.querySelectorAll('input[name="monthday"]').forEach(el => el.addEventListener('change', () => {
+      syncMonthdayOther();
+      syncSchedPreview();
+    }));
+    document.querySelectorAll('input[name="weekly-interval"]').forEach(el => el.addEventListener('change', () => {
+      syncSchedPreview();
+      syncPricing();
+    }));
+    ['weekday', 'monthly-weekday', 'monthly-nth', 'semi-weekday', 'semi-nth-pair'].forEach(name => {
+      document.querySelectorAll('input[name="' + name + '"]').forEach(el => el.addEventListener('change', () => {
+        syncSchedPreview();
+        syncPricing();
+      }));
+    });
+    ['semi-a', 'semi-b', 'monthday-other', 'first-due', 'first-due-date'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', syncSchedPreview);
+      if (el) el.addEventListener('change', syncSchedPreview);
+    });
+
+    function onPhrase() {
+      const freq = checked('freq');
+      if (freq === 'weekly') {
+        const d = WEEKDAY_FULL[checked('weekday') || 'fri'] || 'Friday';
+        if (checked('weekly-interval') === 'every-2') return 'Every other ' + d;
+        return 'Every ' + d;
+      }
+      if (freq === 'monthly') {
+        if (checked('monthly-mode') === 'nth') {
+          const nth = checked('monthly-nth') || '3';
+          const d = WEEKDAY_FULL[checked('monthly-weekday') || 'fri'] || 'Friday';
+          if (nth === 'last') return 'On the last ' + d;
+          return 'On the ' + ordinal(nth) + ' ' + d;
+        }
+        const md = checked('monthday') || '15';
+        if (md === 'last') return 'On the last day';
+        if (md === 'other') {
+          const n = Number(document.getElementById('monthday-other').value) || 1;
+          return 'On the ' + ordinal(n);
+        }
+        return 'On the ' + ordinal(md);
+      }
+      if (freq === 'semimonthly') {
+        const mode = checked('semi-mode') || 'dates';
+        if (mode === 'weekdays') {
+          const pair = checked('semi-nth-pair') || '1-3';
+          const d = WEEKDAY_FULL[checked('semi-weekday') || 'fri'] || 'Friday';
+          if (pair === '2-4') return 'On the 2nd and 4th ' + d + ' each month';
+          return 'On the 1st and 3rd ' + d + ' each month';
+        }
+        const a = Number(document.getElementById('semi-a').value) || 1;
+        const b = Number(document.getElementById('semi-b').value) || 15;
+        return 'On the ' + ordinal(a) + ' and the ' + ordinal(b);
+      }
+      return '';
+    }
+
+    function syncSchedPreview() {
+      const freq = checked('freq') || 'monthly';
+      const define = checked('define');
+      const on = onPhrase();
+      const line = document.getElementById('sched-preview-line');
+      const meta = document.getElementById('sched-preview-meta');
+      let term = '';
+      if (define === 'months') {
+        const m = Number(document.getElementById('loan-months').value) || 24;
+        term = m + ' months';
+      } else {
+        const pay = Number(document.getElementById('pay-amount').value) || 0;
+        const m = derivedMonths();
+        term = money(pay) + ' / payment · ~' + m + ' months';
+      }
+      // Sample shapes: "Every Friday · 24 months" / "Every other Friday · …" (Weekly interval)
+      // "Monthly · On the 15th · 24 months" / "Monthly · On the 3rd Friday · …"
+      // "Twice a month · On the 1st and the 15th · …" / "Twice a month · On the 1st and 3rd Friday each month · …"
+      const bareOn = freq === 'weekly';
+      if (bareOn) {
+        line.textContent = on + ' · ' + term;
+      } else {
+        line.textContent = FREQ_LABEL[freq] + ' · ' + on + ' · ' + term;
+      }
+      const fd = document.getElementById('first-due-date').value;
+      const firstTxt = document.getElementById('first-due').value || 'After funded';
+      meta.textContent = fd
+        ? 'First due ' + fd + ' · under-hood ' + underHood(freq)
+        : firstTxt + ' · under-hood ' + underHood(freq);
+    }
+
+    /* —— Voice lock: drafter = I/me/my; other = display name (2a) else the lender/the borrower; never bare you —— */
+    function isDrafterLender() {
+      return checked('role') !== 'borrower';
+    }
+    function otherPartyName() {
+      const n = (document.getElementById('their-name').value || '').trim();
+      return n || null;
+    }
+    /** Other party when they are the lender (drafter is borrower). */
+    function lenderRef() {
+      return otherPartyName() || 'the lender';
+    }
+    /** Other party when they are the borrower (drafter is lender). */
+    function borrowerRef() {
+      return otherPartyName() || 'the borrower';
+    }
+    /* —— 2a Who: role radio repaints lower labels immediately (role titles; My* stays I/me) —— */
+    function syncWhoLabels() {
+      const lender = isDrafterLender();
+      const otherRole = lender ? 'Borrower' : 'Lender';
+      const other = lender ? borrowerRef() : lenderRef();
+      const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+      set('lbl-their-name', otherRole + '’s name');
+      set('lbl-their-phone', otherRole + '’s phone *');
+      set('lbl-their-email', otherRole + '’s email * (ripcord)');
+      set('hint-their-email', 'Email keeps the loan if ' + other + '’s number changes');
+      set('lbl-my-phone', 'My phone *');
+      set('lbl-my-email', 'My email *');
+    }
+    function syncLateTrustLabels() {
+      const lender = isDrafterLender();
+      const other = lender ? borrowerRef() : lenderRef();
+      const lateLabel = document.getElementById('late-timing-label');
+      const receiptLabel = document.getElementById('receipt-timing-label');
+      const decide = document.getElementById('late-decide-label');
+      const decideSub = document.getElementById('late-decide-sub');
+      const remTitle = document.getElementById('late-reminder-title');
+      const imm = document.getElementById('trust-immediate-label');
+      const conf = document.getElementById('trust-confirm-label');
+
+      if (lender) {
+        lateLabel.textContent = 'If ' + other + ' is late…';
+        receiptLabel.textContent = 'When ' + other + ' sends a payment receipt';
+        decide.textContent = 'I’ll decide';
+        decideSub.textContent = 'whether to add the late fee';
+        remTitle.textContent = other + ' gets a reminder';
+        imm.textContent = 'Count as paid right away';
+        conf.textContent = 'Wait for me to confirm';
+      } else {
+        lateLabel.textContent = 'If I’m late…';
+        receiptLabel.textContent = 'When I send a payment receipt';
+        decide.textContent = other + ' decides';
+        decideSub.textContent = 'whether to add the late fee';
+        remTitle.textContent = 'I’ll get a reminder';
+        imm.textContent = 'Count as paid right away';
+        conf.textContent = 'Wait for ' + other + ' to confirm';
+      }
+      syncReminderCopy();
+    }
+    document.querySelectorAll('input[name="role"]').forEach(el =>
+      el.addEventListener('change', () => {
+        syncWhoLabels();
+        syncLateTrustLabels();
+        if (sid === 'review') updateReview();
+      }));
+    document.getElementById('their-name').addEventListener('input', () => {
+      syncWhoLabels();
+      syncLateTrustLabels();
+      if (sid === 'review') updateReview();
+    });
+
+    /* —— Late fee $ amount (presets + custom; $0 = none) —— */
+    function lateFeeAmount() {
+      const feeVal = checked('fee');
+      if (feeVal === '0') return 0;
+      if (feeVal === 'custom') return Number(document.getElementById('custom-fee').value) || 0;
+      return Number(feeVal) || 0;
+    }
+    function lateFeeLabel() {
+      const amt = lateFeeAmount();
+      return amt === 0 ? '$0' : money(amt).replace('.00', '');
+    }
+
+    function syncReminderCopy() {
+      const late = checked('late') || 'grace';
+      const el = document.getElementById('late-reminder-copy');
+      if (!el) return;
+      if (late === 'decide') {
+        el.textContent = 'Fee may be added soon if unpaid (' +
+          (isDrafterLender() ? 'I’ll decide' : lenderRef() + ' decides') +
+          ' whether to add the late fee).';
+      } else if (late === 'right') {
+        el.textContent = 'Last day before a late fee would apply (if still unpaid) — due-day evening or day before fee posts.';
+      } else {
+        el.textContent = 'Last day before a late fee would apply (if still unpaid).';
+      }
+    }
+
+    /* —— Fee $ first → timing / grace / reminder progressive —— */
+    function syncLate() {
+      const amt = lateFeeAmount();
+      const hasFee = amt > 0;
+      setOpen('custom-fee-fields', checked('fee') === 'custom');
+      setOpen('late-timing-fields', hasFee);
+      const late = checked('late') || 'grace';
+      setOpen('grace-days-fields', hasFee && late === 'grace');
+      setOpen('late-reminder-note', hasFee);
+      syncReminderCopy();
+    }
+    document.querySelectorAll('input[name="fee"]').forEach(el => el.addEventListener('change', () => {
+      syncLate();
+      if (sid === 'review') updateReview();
+    }));
+    document.querySelectorAll('input[name="late"]').forEach(el => el.addEventListener('change', () => {
+      syncLate();
+      if (sid === 'review') updateReview();
+    }));
+    document.getElementById('custom-fee').addEventListener('input', () => {
+      syncLate();
+      if (sid === 'review') updateReview();
+    });
+    document.getElementById('grace-days').addEventListener('input', () => {
+      if (sid === 'review') updateReview();
+    });
+
+    /* —— Review summary —— */
+    
+    /* —— Tab yardstick progressive + preview —— */
+    function syncYard() {
+      const y = checked('yard') || 'date';
+      setOpen('yard-date-fields', y === 'date');
+      setOpen('yard-pay-fields', y === 'payment');
+      syncTabPreview();
+    }
+    function syncTabPreview() {
+      const y = checked('yard') || 'date';
+      const freq = checked('tab-freq') || 'monthly';
+      const other = isDrafterLender() ? borrowerRef() : lenderRef();
+      const line = document.getElementById('tab-preview-line');
+      const meta = document.getElementById('tab-preview-meta');
+      if (!line) return;
+      if (y === 'date') {
+        const d = document.getElementById('tab-target-date').value || 'target date';
+        line.textContent = 'Target ' + d + ' · payment recalcs to hit date';
+        meta.textContent = 'Balance $0 until first charge · one tab with ' + other + ' · ' + FREQ_LABEL[freq];
+      } else {
+        const pay = Number(document.getElementById('tab-pay-amount').value) || 0;
+        line.textContent = money(pay) + ' / payment · duration extends on new charges';
+        meta.textContent = 'Balance $0 until first charge · one tab with ' + other + ' · ' + FREQ_LABEL[freq];
+      }
+    }
+    document.querySelectorAll('input[name="yard"]').forEach(el => el.addEventListener('change', syncYard));
+    document.querySelectorAll('input[name="tab-freq"]').forEach(el => el.addEventListener('change', syncTabPreview));
+    ['tab-target-date', 'tab-pay-amount', 'tab-note', 'fixed-note'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', () => { syncTabPreview(); if (sid === 'review') updateReview(); });
+      el.addEventListener('change', () => { syncTabPreview(); if (sid === 'review') updateReview(); });
+    });
+
+    /* —— Review summary —— */
+    function updateReview() {
+      const isTab = kind() === 'tab';
+      const mode = checked('price');
+      const principal = Number(document.getElementById('principal').value) || 0;
+      const flat = Number(document.getElementById('flat-fee').value) || 0;
+      const apr = Number(document.getElementById('apr').value) || 0;
+      const n = paymentCount() || 24;
+      const months = derivedMonths();
+      const define = checked('define');
+      const freq = checked('freq') || 'monthly';
+      const on = onPhrase();
+
+      const other = isDrafterLender() ? borrowerRef() : lenderRef();
+      const myRole = isDrafterLender() ? 'lender' : 'borrower';
+      const theirRole = isDrafterLender() ? 'borrower' : 'lender';
+      document.getElementById('rev-meta').textContent =
+        'Me (' + myRole + ') ↔ ' + other + ' (' + theirRole + ')';
+
+      document.getElementById('rev-kind').textContent = isTab ? 'Running tab' : 'Fixed-purpose loan';
+      setOpen('fixed-note-fields', !isTab);
+
+      const send = document.getElementById('send-invite');
+      if (send) send.href = isTab ? 'otp.html?kind=tab' : 'otp.html';
+
+      if (isTab) {
+        document.getElementById('rev-nick').textContent = document.getElementById('tab-nick').value || 'Tab';
+        document.getElementById('rev-borrow-row').style.display = 'none';
+        document.getElementById('rev-pricing-row').style.display = 'none';
+        document.getElementById('rev-fee-row').style.display = 'none';
+        document.getElementById('rev-due-row').style.display = 'none';
+        document.getElementById('rev-for-row').style.display = 'none';
+        document.getElementById('rev-yard-row').style.display = '';
+        const y = checked('yard') || 'date';
+        const tabFreq = checked('tab-freq') || 'monthly';
+        if (y === 'date') {
+          const d = document.getElementById('tab-target-date').value || '—';
+          document.getElementById('rev-yard').textContent = 'Target date · ' + d + ' (recalc payment)';
+          document.getElementById('rev-sched').textContent = FREQ_LABEL[tabFreq] + ' · payment to hit date';
+          document.getElementById('rev-payment').textContent = 'Recalcs after first charge';
+        } else {
+          const pay = Number(document.getElementById('tab-pay-amount').value) || 0;
+          document.getElementById('rev-yard').textContent = 'Fixed payment · ' + money(pay) + ' (duration extends)';
+          document.getElementById('rev-sched').textContent = FREQ_LABEL[tabFreq] + ' · ' + money(pay) + ' / payment';
+          document.getElementById('rev-payment').textContent = money(pay);
+        }
+        document.getElementById('rev-payment-row').style.display = '';
+        const note = (document.getElementById('tab-note').value || '').trim();
+        document.getElementById('rev-note').textContent = note || '—';
+      } else {
+        document.getElementById('rev-nick').textContent = document.getElementById('nick').value || 'Loan';
+        document.getElementById('rev-borrow-row').style.display = '';
+        document.getElementById('rev-pricing-row').style.display = '';
+        document.getElementById('rev-fee-row').style.display = '';
+        document.getElementById('rev-due-row').style.display = '';
+        document.getElementById('rev-for-row').style.display = '';
+        document.getElementById('rev-yard-row').style.display = 'none';
+        document.getElementById('rev-borrow').textContent = money(principal);
+
+        const bareOn = freq === 'weekly';
+        if (bareOn) {
+          document.getElementById('rev-sched').textContent = on;
+        } else {
+          document.getElementById('rev-sched').textContent = FREQ_LABEL[freq] + ' · ' + on;
+        }
+
+        if (define === 'months') {
+          document.getElementById('rev-for').textContent = months + ' months · ' + n + ' payments';
+        } else {
+          const pay = Number(document.getElementById('pay-amount').value) || 0;
+          document.getElementById('rev-for').textContent = money(pay) + ' / payment · ~' + months + ' months';
+        }
+
+        const fd = document.getElementById('first-due-date').value;
+        document.getElementById('rev-due').textContent = fd || (document.getElementById('first-due').value || 'After funded');
+
+        const payRow = document.getElementById('rev-payment-row');
+        if (mode === 'none') {
+          document.getElementById('rev-pricing-k').textContent = 'Pay back';
+          document.getElementById('rev-pricing-v').textContent = money(principal);
+          document.getElementById('rev-fee').textContent = 'No fee · borrow = payback';
+          if (define === 'payment') {
+            document.getElementById('rev-payment').textContent = money(Number(document.getElementById('pay-amount').value) || 0);
+            payRow.style.display = '';
+          } else {
+            payRow.style.display = 'none';
+          }
+        } else if (mode === 'flat') {
+          const total = principal + flat;
+          document.getElementById('rev-pricing-k').textContent = 'Pay back';
+          document.getElementById('rev-pricing-v').textContent = money(total);
+          document.getElementById('rev-fee').textContent = 'Flat fee ' + money(flat);
+          if (define === 'payment') {
+            document.getElementById('rev-payment').textContent = money(Number(document.getElementById('pay-amount').value) || 0);
+            payRow.style.display = '';
+          } else {
+            payRow.style.display = 'none';
+          }
+        } else {
+          const interest = principal * (apr / 100) * (months / 12);
+          const total = principal + interest;
+          let per;
+          if (define === 'payment') {
+            per = Number(document.getElementById('pay-amount').value) || 0;
+          } else {
+            per = n > 0 ? total / n : 0;
+          }
+          document.getElementById('rev-pricing-k').textContent = 'Pay back about';
+          document.getElementById('rev-pricing-v').textContent = money(total);
+          document.getElementById('rev-payment').textContent = money(per);
+          document.getElementById('rev-fee').textContent = apr + '% APR · installment';
+          payRow.style.display = '';
+        }
+        const note = (document.getElementById('fixed-note').value || '').trim();
+        document.getElementById('rev-note').textContent = note || '—';
+      }
+
+      // Late lines
+      const amt = lateFeeAmount();
+      const feeLbl = lateFeeLabel();
+      const late = checked('late') || 'grace';
+      let lateText = '';
+      if (amt <= 0) {
+        lateText = 'Late fee: none.';
+      } else if (late === 'right') {
+        lateText = feeLbl + ' right away when late';
+      } else if (late === 'grace') {
+        const waitDays = Number(document.getElementById('grace-days').value);
+        const days = Number.isFinite(waitDays) && waitDays > 0 ? waitDays : 10;
+        lateText = 'Wait ' + days + ' days, then ' + feeLbl;
+      } else {
+        lateText = isDrafterLender()
+          ? 'I’ll decide whether to add the late fee · ' + feeLbl
+          : lenderRef() + ' decides whether to add the late fee · ' + feeLbl;
+      }
+      document.getElementById('rev-late').textContent = lateText;
+
+      const trust = checked('trust');
+      if (trust === 'confirm') {
+        document.getElementById('rev-trust').textContent = isDrafterLender()
+          ? 'Wait for me to confirm'
+          : 'Wait for ' + lenderRef() + ' to confirm';
+      } else {
+        document.getElementById('rev-trust').textContent = 'Count as paid right away';
+      }
+    }
+
+    // Init reveals from defaults
+    syncPricing();
+    syncDefine();
+    syncFreq();
+    syncWhoLabels();
+    syncLateTrustLabels();
+    syncLate();
+    syncYard();
+    showSid('who');
+  
+  </script>
+</body>
+</html>

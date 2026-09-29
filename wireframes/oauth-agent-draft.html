@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Agent drafts tab add-on</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · OAuth agent · Draft add-on</span>
+    <a href="oauth-agent.html">OAuth agent flow</a>
+  </div>
+
+  <div class="oauth-strip">
+    <div class="strip-label">
+      <span>Acting as Ty · scoped token</span>
+      <span class="via-badge agent">via agent</span>
+    </div>
+    <div class="scopes">
+      <span class="scope">addons:propose</span>
+      <span class="scope">loans:read</span>
+    </div>
+    <p class="audit-note">Intent POST /v1/loans/{id}/addon-intents · Idempotency-Key required · via-agent audit append</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="oauth-agent-consent.html">← Consent</a>
+      <h1>Draft add-on</h1>
+      <p class="tagline">Agent client · acting as Ty (borrower) / household helper</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="agent-persona">
+        <div class="who">Drafted by</div>
+        <div class="name">Agent client <span class="via-badge agent">via-agent</span></div>
+        <div style="font-size:12px;color:#666;margin-top:4px">
+          Acting as <strong>Ty</strong>. Household-agent grant is roadmap (same scopes, explicit, revocable) — demo shows Ty’s delegated client.
+        </div>
+      </div>
+
+      <div class="handoff-callout">
+        <strong>Same tab add-on rules</strong>
+        Adds to balance · no rebalance wizard. Mom must still mutually agree. Existing <a href="tab-addon.html">tab-addon.html</a> spine unchanged.
+      </div>
+
+      <div class="box">
+        <div class="title">+$200 · vet bill</div>
+        <div class="meta">Onto Household tab with Mom · first-class addon intent</div>
+      </div>
+
+      <div class="box filled">
+        <div class="title">After +$200</div>
+        <div class="row"><span class="k">Balance</span><span class="v">$180 → <strong>$380</strong></span></div>
+        <div class="row"><span class="k">Yardstick</span><span class="v">Fixed <strong>$50 / Fri</strong></span></div>
+        <div class="row"><span class="k">Payment</span><span class="v">stays $50</span></div>
+        <div class="row"><span class="k">Left</span><span class="v">~4 → <strong>~8 payments</strong></span></div>
+        <p class="hint">Duration extends · yardstick unchanged.</p>
+      </div>
+
+      <div class="field">
+        <label>Optional note</label>
+        <input type="text" value="dogs vet bill" readonly />
+      </div>
+
+      <a class="btn" href="oauth-agent-agree.html">Send to Mom to agree</a>
+      <a class="btn secondary" href="oauth-agent.html">Cancel draft</a>
+      <p class="note">Mom gets SMS doorbell → agree page (or Mom’s agent with her own consent). The agent cannot submit Mom’s agree.</p>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>OAuth agent spine</strong>
+    <a href="oauth-agent-consent.html">← Consent</a> · <a href="oauth-agent-agree.html">Mom agrees →</a>
+  </nav>
+</body>
+</html>

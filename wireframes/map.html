@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Screen map</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .map-list { list-style: none; }
+    .map-list li { margin-bottom: 8px; }
+    .map-list a {
+      display: block;
+      border: 2px solid #bbb;
+      background: #f4f4f4;
+      padding: 10px 12px;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 13px;
+    }
+    .map-list a:hover { background: #e8e8e8; }
+    .map-list .n { font-weight: 700; }
+    .map-list .d { display: block; font-size: 11px; color: #666; margin-top: 2px; }
+    .map-list a.paradigm { border-color: #2d6a4f; background: #eef6f1; }
+    .map-list a.agent { border-color: #3d5a80; background: #e8eef6; }
+  </style>
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Screen map</span>
+    <a href="index.html">Home</a>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <h1>PLT MVP wireframes</h1>
+      <p class="tagline">Clickable mid-fi · no backend</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="sms-rule">
+        <strong>SMS = doorbell + one fork</strong>
+        Alert · handoff · binary fork · confirm-what-happened. Never wizards / terms / policy / Q&amp;A loops in SMS. Complex → web.
+      </div>
+
+      <ul class="map-list">
+        <li><a class="paradigm" href="sms-templates.html"><span class="n">SMS templates</span><span class="d">POR message templates</span></a></li>
+        <li><a class="paradigm" href="handoff.html"><span class="n">Handoff map</span><span class="d">SMS / MMS → web flowchart for each flow</span></a></li>
+        <li><a class="agent" href="oauth-agent.html"><span class="n">OAuth agent flow</span><span class="d">AI act-as-user · OAuth · via-agent audit · $200 vet demo</span></a></li>
+        <li><a href="index.html"><span class="n">1. Home — My loans</span><span class="d">Propose CTA + loan cards</span></a></li>
+        <li><a href="propose.html"><span class="n">2. Propose wizard</span><span class="d">Who → tab|fixed fork → … · tab skips full schedule · web only</span></a></li>
+        <li><a href="otp.html"><span class="n">3. OTP stub</span><span class="d">SMS code → web verify</span></a></li>
+        <li><a href="invite-preview.html"><span class="n">4. Invite SMS copy</span><span class="d">Soft copy · no amount · handoff</span></a></li>
+        <li><a href="invite.html"><span class="n">5. Invite landing</span><span class="d">Continue / Report · SMS strip</span></a></li>
+        <li><a href="agree.html"><span class="n">6. Agree terms (fixed)</span><span class="d">Link only · not SMS body</span></a></li>
+        <li><a href="agree-tab.html"><span class="n">6b. Agree tab (sample)</span><span class="d">Running tab terms · first charge creates it</span></a></li>
+
+        <li><a href="pending-funding.html"><span class="n">7. Pending funding</span><span class="d">SMS nudge + Mark funded</span></a></li>
+        <li><a href="active.html"><span class="n">8. Active loan hub (fixed)</span><span class="d">Confirm SMS · due · extras → tab or new propose</span></a></li>
+        <li><a href="tab-active.html"><span class="n">8b. Active tab hub</span><span class="d">Running tab · yardstick · add-on (no rebalance)</span></a></li>
+
+        <li><a href="clarify.html"><span class="n">9. Clarify / one fork</span><span class="d">Tap links · SMS preview</span></a></li>
+        <li><a href="confirm-toast.html"><span class="n">10. Dual-notify</span><span class="d">$50 applied · $420 left</span></a></li>
+        <li><a href="pile-on.html"><span class="n">11. ~~Pile-on (fixed)~~ DEPRECATED</span><span class="d">Out of MVP · redirect → tab-addon / propose</span></a></li>
+        <li><a href="tab-addon.html"><span class="n">11c. Tab add-on</span><span class="d">Add to balance · preview weeks-left / payment-to-date · no rebalance</span></a></li>
+        <li><a href="tab-addon-confirm.html"><span class="n">11d. Tab add-on confirm</span><span class="d">Mutual accept</span></a></li>
+
+        <li><a href="pile-on-confirm.html"><span class="n">11b. ~~Pile-on confirm~~ DEPRECATED</span><span class="d">Historical · use tab-addon-confirm</span></a></li>
+        <li><a href="dispute.html"><span class="n">12. Funding dispute</span><span class="d">SMS handoff · pause on page</span></a></li>
+        <li><a href="pause.html"><span class="n">12b. Pause</span><span class="d">Hardship · SMS handoff</span></a></li>
+        <li><a href="paid-off.html"><span class="n">13. Paid off</span><span class="d">Congrats</span></a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

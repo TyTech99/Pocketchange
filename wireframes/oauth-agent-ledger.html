@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Agent payment + ledger</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · OAuth agent · Payment + ledger</span>
+    <a href="oauth-agent.html">OAuth agent flow</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · payment confirm (both phones)</span>
+      <span class="arrow">doorbell · confirm only</span>
+    </div>
+    <div class="msg">Household tab: $50 applied · $330 left</div>
+    <p class="meta-line">Human phone still gets the confirm — agent cannot silence the doorbell.</p>
+  </div>
+
+  <div class="oauth-strip">
+    <div class="strip-label">
+      <span>Agent confirmed ledger apply</span>
+      <span class="via-badge agent">via agent</span>
+    </div>
+    <div class="scopes">
+      <span class="scope">payments:propose</span>
+      <span class="scope">payments:read</span>
+    </div>
+    <p class="audit-note">POST /v1/payment-applications · applied = ledger + dual notify · not a transfer</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="oauth-agent-agree.html">← Agree</a>
+      <h1>Household tab · with Mom</h1>
+      <p class="tagline">Running tab · via-agent ledger</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="box filled">
+        <div class="row"><span class="k">Balance</span><span class="v big">$330.00</span></div>
+        <div class="row"><span class="k">Next due Fri</span><span class="v">$50.00</span></div>
+        <div class="row"><span class="k">Yardstick</span><span class="v">Fixed $50 / Fri · ~7 left</span></div>
+        <span class="status active">● Active tab</span>
+      </div>
+
+      <div class="box">
+        <div class="title">Ledger</div>
+        <div class="ledger">
+          <div class="entry">
+            <span>Oct 10 · Payment<span class="via-line">via agent · act-as Ty · payments:propose</span></span>
+            <span class="amt neg">−$50.00</span>
+          </div>
+          <div class="entry">
+            <span>Oct 10 · Charge · dogs vet bill<span class="via-line">via agent · mutually agreed · Mom’s agent</span></span>
+            <span class="amt">+$200.00</span>
+          </div>
+          <div class="entry"><span>Oct 3 · Payment</span><span class="amt neg">−$50.00</span></div>
+          <div class="entry"><span>Sep 28 · Charge · groceries</span><span class="amt">+$40.00</span></div>
+          <div class="entry"><span>Sep 20 · Tab opened (first charge)</span><span class="amt">—</span></div>
+        </div>
+      </div>
+
+      <div class="handoff-callout">
+        <strong>Via-agent badge</strong>
+        Ledger lines show which agent + subject + scope. Humans stay notified by SMS. Toggle human-in-loop on <a href="oauth-agent-prefs.html">prefs</a>.
+      </div>
+
+      <a class="btn" href="oauth-agent-prefs.html">Human-in-loop prefs</a>
+      <a class="btn secondary" href="tab-active.html">Open normal tab hub</a>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>OAuth agent spine</strong>
+    <a href="oauth-agent-agree.html">← Agree</a> · <a href="oauth-agent-prefs.html">Prefs →</a>
+  </nav>
+</body>
+</html>

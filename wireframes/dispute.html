@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Funding dispute</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Screen 11 · Funding dispute</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · dispute handoff</span>
+      <span class="arrow">SMS → web</span>
+    </div>
+    <div class="msg">Boat paused — Alex says funds not received. Open to resolve: <a href="dispute.html">plt.io/d/…</a></div>
+    <p class="meta-line">Handoff link only · resolve on page</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="index.html">← My loans</a>
+      <h1>Boat · paused</h1>
+      <p class="tagline">Funding dispute</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="handoff-callout">
+        <strong>SMS / MMS → web</strong>
+        Dispute / late / pause: SMS carries a link only. Work happens here.
+      </div>
+
+      <div class="box filled">
+        <div class="title">Alex says funds not received</div>
+        <div class="meta">Monitoring is off until we both resolve. No interest accrual / nudges while paused.</div>
+        <span class="status paused">■ Paused</span>
+      </div>
+
+      <div class="field radio" id="resolve-opts">
+        <label>How to resolve</label>
+        <label class="opt"><input type="radio" name="resolve" value="funded" checked /> Resolved — funded
+          <span class="sub">Money did arrive; resume monitoring</span></label>
+        <label class="opt"><input type="radio" name="resolve" value="cancel" /> Cancel loan (Ty · lender)
+          <span class="sub">Funds never arrived / walk away</span></label>
+      </div>
+
+      <div class="field reveal is-open" id="funded-note">
+        <label>Optional note</label>
+        <input type="text" placeholder="e.g. Venmo cleared this morning" />
+      </div>
+      <div class="field reveal" id="cancel-note">
+        <label>Cancel reason (optional)</label>
+        <input type="text" placeholder="e.g. never received transfer" />
+      </div>
+
+      <a class="btn" href="active.html" id="resolve-btn">Confirm · resume as funded</a>
+      <a class="btn secondary" href="index.html">Back</a>
+      <p class="note">Post-MVP: forward payment email as evidence if Ty is silent</p>
+      <script>
+        function syncResolve() {
+          const v = document.querySelector('input[name="resolve"]:checked').value;
+          document.getElementById('funded-note').classList.toggle('is-open', v === 'funded');
+          document.getElementById('cancel-note').classList.toggle('is-open', v === 'cancel');
+          const btn = document.getElementById('resolve-btn');
+          if (v === 'funded') {
+            btn.textContent = 'Confirm · resume as funded';
+            btn.href = 'active.html';
+            btn.classList.remove('danger');
+            btn.classList.add('btn');
+          } else {
+            btn.textContent = 'Confirm · cancel loan';
+            btn.href = 'index.html';
+            btn.classList.add('danger');
+          }
+        }
+        document.querySelectorAll('input[name="resolve"]').forEach(el => el.addEventListener('change', syncResolve));
+        syncResolve();
+      </script>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="pending-funding.html">← Pending</a> · <a href="paid-off.html">Paid off →</a> · <a href="sms-templates.html">Templates</a>
+  </nav>
+</body>
+</html>

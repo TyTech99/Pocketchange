@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLT Wireframes — Active tab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wf-chrome">
+    <span>Wireframe · Running tab · Active</span>
+    <a href="map.html">Screen map</a>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · payment confirm (both)</span>
+      <span class="arrow">confirm only · no ask</span>
+    </div>
+    <div class="msg">Household tab: $50 applied · $180 left</div>
+  </div>
+
+  <div class="sms-strip">
+    <div class="strip-label">
+      <span>Phone SMS preview · due reminder</span>
+      <span class="arrow">alert + optional link</span>
+    </div>
+    <div class="msg">Household tab due Fri · $50. Open: <a href="tab-active.html">plt.io/t/…</a></div>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <a class="back" href="index.html">← My loans</a>
+      <h1>Household tab · with Mom</h1>
+      <p class="tagline">Running tab · one active per pair</p>
+    </div>
+    <div class="content">
+      <p class="hammer">Friends &amp; family loan tracker. We never touch your money.</p>
+
+      <div class="box filled">
+        <div class="row"><span class="k">Balance</span><span class="v big">$180.00</span></div>
+        <div class="row"><span class="k">Next due Fri</span><span class="v">$50.00</span></div>
+        <div class="row"><span class="k">Yardstick</span><span class="v">Fixed $50 · ~4 payments left</span></div>
+        <span class="status active">● Active tab</span>
+      </div>
+
+      <div class="soft-callout">
+        <strong>Yardstick</strong>
+        Fixed payment: duration extends when we add charges. As lender I can reset $. (XOR target date: payment recalcs; I can reset or clear the date.)
+      </div>
+
+      <div class="box">
+        <div class="title">Note</div>
+        <div class="meta">groceries + kids stuff we cover for each other</div>
+        <p class="hint mt">Edit note → mutual re-agree (both must accept).</p>
+      </div>
+
+      <div class="box">
+        <div class="title">How to log a payment</div>
+        <div class="meta">Forward a receipt — PLT never moves funds. Prefer email.</div>
+        <p class="mt"><strong>Email (preferred)</strong></p>
+        <div class="payment-rail">payment@personalloantracker.io</div>
+        <p class="hint mt">Tip: put “Household tab” in the memo. Overpay on a fixed loan with Mom defaults to tab credit when this tab exists.</p>
+      </div>
+
+      <div class="box">
+        <div class="title">Ledger</div>
+        <div class="ledger">
+          <div class="entry"><span>Oct 3 · Payment</span><span class="amt neg">−$50.00</span></div>
+          <div class="entry"><span>Sep 28 · Charge · groceries</span><span class="amt">+$40.00</span></div>
+          <div class="entry"><span>Sep 20 · Charge · vet</span><span class="amt">+$200.00</span></div>
+          <div class="entry"><span>Sep 20 · Tab opened (first charge)</span><span class="amt">—</span></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn" href="clarify.html?tab=1">I paid</a>
+        <a class="btn secondary" href="pause.html">Pause</a>
+      </div>
+
+      <div class="handoff-callout">
+        <strong>Tab add-on · no rebalance wizard</strong>
+        New charge adds to balance. Preview updates weeks-left or payment-to-hit-date. SMS = handoff link only.
+      </div>
+      <a class="btn ghost" href="tab-addon.html">Add charge to tab</a>
+      <a class="btn ghost" href="history.html">Full history</a>
+
+      <div class="box">
+        <span class="wf-label">My extras as lender</span>
+        <div class="btn-row">
+          <a class="btn secondary" href="tab-active.html">Reset payment $</a>
+          <a class="btn secondary" href="tab-active.html">Reset / clear date</a>
+        </div>
+        <p class="note mt">Yardstick resets are lender-only on web; borrower sees updated preview. Not an SMS Q&amp;A.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="footer-nav">
+    <strong>Demo spine</strong>
+    <a href="tab-addon.html">Add-on →</a> · <a href="active.html">Fixed active</a> · <a href="propose.html">Propose</a>
+  </nav>
+</body>
+</html>
