@@ -1,4 +1,4 @@
-import { listLoans, paidTotalCents, balanceRemainingCents, getParticipants, centsToDollars } from '$lib/db';
+import { listLoans, paidTotalCents, balanceRemainingCents, getParticipants, centsToDollars } from '$lib/demo/db';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {

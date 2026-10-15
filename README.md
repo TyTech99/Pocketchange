@@ -15,16 +15,23 @@ Dev server: http://127.0.0.1:3456
 
 ## Paths
 
-- `/` — loan list
-- `/create` — create loan
-- `/loan/[id]` — detail + ledger + confirmations
-- `/sms` — SMS simulator (same processing as Twilio webhook)
-- `POST /api/sms` — Twilio-ready webhook (`From`, `Body` form params)
-- `GET|POST /api/loans` — JSON API
+- `/` is the Hello World placeholder for the real app.
+- `/wireframes/` is the design reference: plain HTML and PNG files in `static/wireframes/`.
+- `/demo/` is the earlier interactive prototype, kept as reference material. It is a normal SvelteKit route tree in `src/routes/demo/` (support code in `src/lib/demo/`). It is not the architecture. The real architecture will be designed from the product requirements.
+
+Demo routes, all under `/demo/`:
+
+- `/demo/loans` is the loan list. `/demo/` redirects here.
+- `/demo/create` creates a loan.
+- `/demo/loan/[id]` shows detail, ledger and confirmations.
+- `/demo/sms` is the SMS simulator.
+- `/demo/oauth-agent` is the OAuth agent walkthrough.
+- `POST /demo/api/sms` is the Twilio-style webhook (`From`, `Body` form params).
+- `GET|POST /demo/api/loans` is the JSON API.
 
 ## Data
 
-Local SQLite through Node's built-in `node:sqlite` (needs Node 22.13 or newer). Runtime file, not committed: `data/loans.db`
+The demo uses local SQLite through Node's built-in `node:sqlite` (needs Node 22.13 or newer). Runtime file, not committed: `data/loans.db`
 
 ## Deploy
 

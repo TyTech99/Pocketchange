@@ -15,7 +15,7 @@
   <nav class="quiet" aria-label="Preview links">
     <a href="/wireframes/" data-sveltekit-reload>Wireframes</a>
     <span aria-hidden="true">·</span>
-    <a href="/loans">Loans prototype</a>
+    <a href="/demo/" data-sveltekit-reload>Demo</a>
   </nav>
 </section>
 

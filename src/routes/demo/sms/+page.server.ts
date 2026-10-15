@@ -1,5 +1,5 @@
-import { listLoans, centsToDollars } from '$lib/db';
-import { processInboundSms } from '$lib/processInboundSms';
+import { listLoans, centsToDollars } from '$lib/demo/db';
+import { processInboundSms } from '$lib/demo/processInboundSms';
 import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 

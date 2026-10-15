@@ -2,7 +2,7 @@
   let { data } = $props();
 </script>
 
-<p class="back"><a href="/loans">← All loans</a></p>
+<p class="back"><a href="/demo/loans">← All loans</a></p>
 <h1>{data.loan.title}</h1>
 
 <div class="balance-card" id="balance">
@@ -30,7 +30,7 @@
 <section>
   <h2>Payment ledger</h2>
   {#if data.payments.length === 0}
-    <p class="muted">No payments yet. Forward a payment SMS via the <a href="/sms?loan={data.loan.id}">SMS simulator</a>.</p>
+    <p class="muted">No payments yet. Forward a payment SMS via the <a href="/demo/sms?loan={data.loan.id}">SMS simulator</a>.</p>
   {:else}
     <table>
       <thead>
@@ -68,7 +68,7 @@
 </section>
 
 <p class="actions">
-  <a class="btn" href="/sms?loan={data.loan.id}">Simulate payment SMS</a>
+  <a class="btn" href="/demo/sms?loan={data.loan.id}">Simulate payment SMS</a>
 </p>
 
 <style>

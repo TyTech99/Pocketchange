@@ -15,12 +15,12 @@ Narrows: the proposed `docs/plans/tdd-and-e2e-strategy.md` (not yet in the repo)
 
 ## Facts (verified in repo at 4776670)
 
-- Database tables: `loans` (title, principal, notes), `participants` (name, phone, role), `payments`, `confirmations` (`src/lib/db.ts`).
+- Database tables: `loans` (title, principal, notes), `participants` (name, phone, role), `payments`, `confirmations` (`src/lib/demo/db.ts`).
 - There is no column for fee, schedule, due date, late policy, receipt trust, or loan status.
 - `confirmations` stores payment confirmation texts only. No table stores reminders or other outbound messages.
 - No scheduler or clock exists in the code.
 - Known gap 1: the dev server port is fixed at 3456 in `package.json`. `UAT.md` expects the app on :12001.
-- Known gap 2: the database path is fixed at `data/loans.db` (`src/lib/db.ts`, line 5). A test cannot point the app at another file.
+- Known gap 2: the database path is fixed at `data/loans.db` (`src/lib/demo/db.ts`, line 5). A test cannot point the app at another file.
 - Both gaps are recorded here and are **not fixed in this plan**. They block running the seeded database under the app. Fixing them is a later change.
 - `.gitignore` already ignores `data/*.db` and `data/*.db-*`, so throwaway databases stay out of git.
 - Requirement sources: `MVP-USE-CASES.md` ("Reminders & late", "Repayment", "Lifecycle"), `MVP-SCREENS.md` §2d and §8.
@@ -125,7 +125,7 @@ The requirements do not say these things. The criteria above rely on them.
 
 ### Payments (example data)
 
-Texts match shapes the prototype parser already handles (`src/lib/parsePaymentSms.ts`). All are fake.
+Texts match shapes the prototype parser already handles (`src/lib/demo/parsePaymentSms.ts`). All are fake.
 
 | ID | Text | Amount |
 |---|---|---|

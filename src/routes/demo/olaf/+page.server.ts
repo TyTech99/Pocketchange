@@ -2,5 +2,5 @@ import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-  throw redirect(308, '/oauth-agent');
+  throw redirect(308, '/demo/oauth-agent');
 };
