@@ -9,18 +9,12 @@
 <div class="shell">
   <header class="top">
     <a href="/" class="brand">personalloantracker.io</a>
-    <nav>
-      <a href="/loans">Loans</a>
-      <a href="/create">Create loan</a>
-      <a href="/sms">SMS simulator</a>
-      <a href="/oauth-agent">OAuth agent</a>
-    </nav>
   </header>
   <main>
     {@render children()}
   </main>
   <footer>
-    Prototype only — no real money movement. Twilio webhook at <code>POST /api/sms</code>.
+    Preprod placeholder. The wireframes and the demo are reference material, not the real app.
   </footer>
 </div>
 
@@ -49,6 +43,5 @@
     border-bottom: 1px solid #243041;
   }
   .brand { font-weight: 700; color: #f8fafc; font-size: 1.05rem; }
-  nav { display: flex; gap: 1rem; font-size: 0.95rem; }
   footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid #243041; color: #94a3b8; font-size: 0.85rem; }
 </style>

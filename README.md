@@ -13,22 +13,15 @@ npm run dev
 
 Dev server: http://127.0.0.1:3456
 
-## Paths
+## What is here
 
-- `/` — loan list
-- `/create` — create loan
-- `/loan/[id]` — detail + ledger + confirmations
-- `/sms` — SMS simulator (same processing as Twilio webhook)
-- `POST /api/sms` — Twilio-ready webhook (`From`, `Body` form params)
-- `GET|POST /api/loans` — JSON API
+- `/` is the Hello World placeholder for the real app. It is the only page the app serves.
+- `/wireframes/` is the design reference. Plain HTML and PNG files in `static/wireframes/`, served as-is.
+- `/demo/` is the earlier interactive prototype, kept as reference material in `static/demo/`, served as-is. It is not the architecture. The real architecture will be designed from the product requirements.
 
-## Data
+## Demo (reference only)
 
-Local SQLite through Node's built-in `node:sqlite` (needs Node 22.13 or newer). Runtime file, not committed: `data/loans.db`
-
-## Deploy
-
-GitHub (`TyTech99/Pocketchange`, `main`) is the source of truth. Hostinger builds the app from it as a Node.js web app at `pocketchange.afterthedemo.com`. See `docs/decisions/` for the open deploy questions.
+`static/demo/` holds the prototype's pages, API routes, and support code, moved there without changes. Its routes (`/create`, `/api/sms`, `/api/loans`, `/sms`, `/oauth-agent`) do not run in the app. Nothing should be built on them.
 
 ## Docs & wireframes
 
