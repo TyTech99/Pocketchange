@@ -50,6 +50,16 @@ The requirements do not say what happens in these cases.
 | C13 | Clarify expiry time | Open | 2026-10-14 | Requirements review |
 | C14 | Life events: death, incapacity, a party leaving, refinancing, write-off | Open | 2026-10-14 | Requirements review |
 
+## D. Runtime and deployment
+
+Added 2026-10-14 after the Hermes lookup and the runtime and Hostinger discussions.
+
+| # | Question | Status | Date | Source |
+|---|---|---|---|---|
+| D1 | Is Hermes a PocketChange product agent, a dev-process companion, or out of scope? | Open | 2026-10-14 | Hermes lookup; the requirements are silent on Hermes |
+| D2 | Which model or provider powers the generic inference plumbing outside Jev: OpenAI API or another? | Open | 2026-10-14 | Runtime discussion; the docs name no provider for non-Jev inference |
+| D3 | How does PocketChange deploy on Hostinger shared hosting: a GitHub mirror feeding the Hostinger GitHub deploy hook, with Gitea as system of record? | Open | 2026-10-14 | Hostinger discussion |
+
 ## Rules
 
 - An item moves to a decision record in this folder only when Ty decides it.
