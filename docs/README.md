@@ -10,6 +10,8 @@ Plan of record. Text only. Evidence goes in `../artifacts/`.
 | `product/` | Product requirements: `MVP-USE-CASES.md`, `MVP-SCREENS.md`, `MVP-API.md`. `MVP-SCREENS.md` follows the wireframes in `../static/wireframes/`. |
 | `plans/` | Plans: launch plan, UAT plans, graft plans. One file per plan. |
 | `decisions/` | Decision records: what was decided, by whom, when, and why. |
+| `RAILS.md` | Agent rails: the five-rung ladder and how to encode a correction. |
+| `STYLE.md` | Style defaults and the human-review list. The weakest rung. |
 
 ## Repo layout (current and target)
 
@@ -20,6 +22,8 @@ Plan of record. Text only. Evidence goes in `../artifacts/`.
 | `production/` | Empty | Future live app code. Nothing here until Ty approves the start. |
 | `docs/` | New | Plans, decisions, bot roles. |
 | `artifacts/` | New | Evidence: screenshots and test output. |
+| `rules/` | New | Short tool-facing pointers for agents (rung 3 of `RAILS.md`). |
+| `skills/` | New | How to prove work and where features live: `verify`, `feature-map`, `penpot-wireframe`, `playbooks`. |
 
 ## Rules
 
