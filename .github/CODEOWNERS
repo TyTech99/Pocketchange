@@ -1,0 +1,7 @@
+# Rails paths need Ty's review so agents cannot weaken their own gate.
+# Takes effect only when branch protection on main enables "Require review from Code Owners".
+/.github/workflows/ @TyTech99
+/scripts/ @TyTech99
+/rules/ @TyTech99
+/skills/ @TyTech99
+/AGENTS.md @TyTech99
