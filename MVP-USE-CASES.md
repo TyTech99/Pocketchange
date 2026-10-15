@@ -113,7 +113,7 @@ Use case: product must not turn SMS into a chatbot.
 1. Outbound SMS does at most one of: alert · handoff · binary fork · confirm-what-happened.
 2. Propose / agree terms / tab add-on / dispute resolution always open a page.
 3. Hybrid: email-first for heavy; SMS for short critical nudges, OTP, and when they text first.
-4. Wireframes show the SMS POR in `wireframes/sms-templates.html` and the flowchart in `wireframes/handoff.html`.
+4. Wireframes show the SMS POR in `static/wireframes/sms-templates.html` and the flowchart in `static/wireframes/handoff.html`.
 
 ## MMS / SMS receipt forward → web confirm / clarify
 

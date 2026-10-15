@@ -10,7 +10,7 @@
   <header class="top">
     <a href="/" class="brand">personalloantracker.io</a>
     <nav>
-      <a href="/">Loans</a>
+      <a href="/loans">Loans</a>
       <a href="/create">Create loan</a>
       <a href="/sms">SMS simulator</a>
       <a href="/oauth-agent">OAuth agent</a>

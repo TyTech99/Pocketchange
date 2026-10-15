@@ -2,7 +2,7 @@
   let { data } = $props();
 </script>
 
-<p class="back"><a href="/">← All loans</a></p>
+<p class="back"><a href="/loans">← All loans</a></p>
 <h1>{data.loan.title}</h1>
 
 <div class="balance-card" id="balance">

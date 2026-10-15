@@ -14,7 +14,7 @@ Plan of record. Text only. Evidence goes in `../artifacts/`.
 
 | Path | Status | Purpose |
 |---|---|---|
-| `wireframes/` | Exists | HTML and PNG mockups. Design reference only. Not shipped. Dev port `:12000`. |
+| `static/wireframes/` | Exists | HTML and PNG mockups. Design reference. SvelteKit serves them at `/wireframes/` (public on the preprod site). Dev port `:12000`. |
 | repo root (`src/`, `package.json`, `svelte.config.js`, `vite.config.ts`) | Exists | SvelteKit and SQLite (`node:sqlite`) prototype. Hostinger builds it as a Node.js web app from `main`. UAT dev port is `:12001`, but `package.json` currently fixes `3456`. Not production. |
 | `production/` | Empty | Future live app code. Nothing here until Ty approves the start. |
 | `docs/` | New | Plans, decisions, bot roles. |

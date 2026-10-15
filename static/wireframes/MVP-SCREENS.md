@@ -42,7 +42,7 @@ Complex work ALWAYS: **link → page**. Ambiguous payment: at most ONE clarify p
 | 9 | Receipt forward | Prefer email; MMS → same parser | confirm or ONE clarify |
 | 10 | Same as last time? | One fork with taps | clarify if No |
 
-Wireframes: `wireframes/sms-templates.html`, `wireframes/handoff.html`, plus SMS preview strips on invite / clarify / active / pending-funding / tab-addon / dispute / pause / agree / confirm-toast / otp.
+Wireframes: `static/wireframes/sms-templates.html`, `static/wireframes/handoff.html`, plus SMS preview strips on invite / clarify / active / pending-funding / tab-addon / dispute / pause / agree / confirm-toast / otp.
 
 ### Key template wording
 
