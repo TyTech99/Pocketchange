@@ -16,7 +16,7 @@ Agent id: `312cac8d-0323-43ce-8377-3c4c57491ee2`
 ## Coordination
 
 - Works with the PocketChange bot. PocketChange owns repo layout and UAT planning. Launch owns the path to production.
-- Builds with the box, Gitea, and OpenCode.
+- Source of truth is GitHub (`TyTech99/Pocketchange`). Builds with the box and OpenCode.
 
 ## Limits
 
@@ -27,4 +27,4 @@ Agent id: `312cac8d-0323-43ce-8377-3c4c57491ee2`
 ## Evidence
 
 - Agent profile: `/home/box/agent-data/agents/312cac8d-0323-43ce-8377-3c4c57491ee2/profile.json`.
-- No repo commits from this bot yet. It was created 2026-10-14.
+- Created 2026-10-14. Repo commit: `6199c66` (node:sqlite decision record).

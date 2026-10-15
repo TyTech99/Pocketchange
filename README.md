@@ -24,7 +24,11 @@ Dev server: http://127.0.0.1:3456
 
 ## Data
 
-Local SQLite (runtime, not committed): `data/loans.db`
+Local SQLite through Node's built-in `node:sqlite` (needs Node 22.13 or newer). Runtime file, not committed: `data/loans.db`
+
+## Deploy
+
+GitHub (`TyTech99/Pocketchange`, `main`) is the source of truth. Hostinger builds the app from it as a Node.js web app at `pocketchange.afterthedemo.com`. See `docs/decisions/` for the open deploy questions.
 
 ## Docs & wireframes
 

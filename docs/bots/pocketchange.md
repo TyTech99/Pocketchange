@@ -4,7 +4,7 @@ Agent id: `90385cbd-998c-4a0b-8e18-6b5766f1fa1d`
 
 ## Owns
 
-- Project orchestration for Ty_Tech/PocketChange.
+- Project orchestration for `TyTech99/Pocketchange` on GitHub, the source of truth.
 - Repo layout.
 - The agent-rails graft sequence.
 - UAT plans.

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Pocket Change (Ty_Tech/PocketChange, also personalloantracker / PLT). This file says which bot owns what. Details are in `docs/bots/`.
+Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth; also personalloantracker / PLT). This file says which bot owns what. Details are in `docs/bots/`.
 
 ## Bots
 
@@ -25,6 +25,6 @@ Pocket Change (Ty_Tech/PocketChange, also personalloantracker / PLT). This file 
 ## Repo state at time of writing
 
 - Branch: `main` only.
-- Commits: `5c4fb21` (Ty, 2026-09-28), `9e80a91` (initial, grokbot_ty).
+- History: see `git log`. The first commits are `9e80a91` (initial, grokbot_ty) and `5c4fb21` (Ty, 2026-09-28).
 - UAT ports: wireframes `:12000`, Svelte app `:12001` (`/workspace/agent-rails-uat/UAT.md`).
-- Prototype source: `/workspace/personalloantracker`.
+- Prototype source: the repo root (`src/`). It uses `node:sqlite`. Hostinger builds it as a Node.js web app from `main`.

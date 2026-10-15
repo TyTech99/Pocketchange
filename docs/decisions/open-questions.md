@@ -2,7 +2,7 @@
 
 Tracked, not decided. Each item is open as of 2026-10-14.
 
-Sources: `tdd-and-e2e-strategy.md` (strategy draft) and `e2e-sample-data.md` (sample data draft). Both are proposals and are not in this repo yet. "Requirements" means `MVP-USE-CASES.md`, `MVP-SCREENS.md`, and `MVP-API.md`.
+Sources: `tdd-and-e2e-strategy.md` (strategy draft) and `e2e-sample-data.md` (sample data draft). Both are proposals and are in `docs/plans/`. "Requirements" means `MVP-USE-CASES.md`, `MVP-SCREENS.md`, and `MVP-API.md`.
 
 ## A. Late-payment workflow assumptions
 
@@ -59,7 +59,7 @@ Added 2026-10-14 after the Hermes lookup and the runtime and Hostinger discussio
 | D1 | Is Hermes a PocketChange product agent, a dev-process companion, or out of scope? | Open | 2026-10-14 | Hermes lookup; the requirements are silent on Hermes |
 | D2 | Which model or provider powers the generic inference plumbing outside Jev: OpenAI API or another? | Open | 2026-10-14 | Runtime discussion; the docs name no provider for non-Jev inference |
 | D3 | How does PocketChange deploy on Hostinger shared hosting? GitHub (`TyTech99/Pocketchange`, `main`) is the source of truth, and Hostinger builds the app from it as a Node.js web app. The open part is the deploy pattern: which files are public, and what the Git link deploys. | Open | 2026-10-14 | Hostinger discussion |
-| D4 | Should Hostinger deploy only a public subfolder instead of the whole repo? The site currently serves all repo files publicly (docs, wireframes, package.json readable by URL); no secrets found but internal plans and bot role files are exposed. | Open | 2026-10-14 | Hostinger deploy check of pocketchange.afterthedemo.com |
+| D4 | Should Hostinger deploy only a public subfolder instead of the whole repo? Hostinger's Git link points at the whole repo (`TyTech99/Pocketchange`, `main`, directory empty) and is the same link the Node.js app builds from. Earlier on 2026-10-14 the site served repo files by URL (docs, wireframes, `package.json`); no secrets were found. After the node:sqlite build, the site serves the app and those file URLs return 404. | Open | 2026-10-14 | Hostinger deploy check of pocketchange.afterthedemo.com |
 | D5 | Which database module runs on Hostinger, given its glibc is older than 2.29 and the `better-sqlite3` binary failed to load? | Resolved: replaced with Node's built-in `node:sqlite` (PR #1, commit `4db353e`) | 2026-10-14 | [Decision record](2026-10-14-node-sqlite.md) |
 
 ## Rules
