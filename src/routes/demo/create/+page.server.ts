@@ -1,5 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { createLoan } from '$lib/db';
+import { createLoan } from '$lib/demo/db';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
@@ -34,6 +34,6 @@ export const actions: Actions = {
       borrowers
     });
 
-    throw redirect(303, `/loan/${loan.id}`);
+    throw redirect(303, `/demo/loan/${loan.id}`);
   }
 };

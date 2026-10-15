@@ -403,8 +403,8 @@
 
       <div class="actions">
         <button type="button" class="btn" onclick={reset}>Replay demo</button>
-        <a class="btn secondary" href="/loans">Back to loans</a>
-        <a class="btn ghost" href="/sms">SMS simulator</a>
+        <a class="btn secondary" href="/demo/loans">Back to loans</a>
+        <a class="btn ghost" href="/demo/sms">SMS simulator</a>
       </div>
     </section>
   {/if}

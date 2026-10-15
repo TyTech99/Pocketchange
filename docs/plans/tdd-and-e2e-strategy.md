@@ -16,10 +16,10 @@ Date: 2026-10-14
 
 - `package.json` has `dev`, `build`, `preview`, `start`. It has no `test` script and no test dependencies.
 - The repo has no `tests/` folder, no `scripts/` folder, and no CI config.
-- The prototype is SvelteKit with `node:sqlite` (Node built-in; previously `better-sqlite3`). Tables: `loans`, `participants`, `payments`, `confirmations` (`src/lib/db.ts`).
-- The database path is fixed to `data/loans.db` under the working directory (`src/lib/db.ts`, line 5). A test cannot point at another file today.
-- `src/lib/parsePaymentSms.ts` parses PayPal, Zelle, Venmo and Cash App SMS shapes. It returns amount in cents, sender hint, provider, and a confidence level.
-- `src/lib/processInboundSms.ts` turns an inbound SMS into a recorded payment. `POST /api/sms` and the `/sms` simulator both use it.
+- The prototype is SvelteKit with `node:sqlite` (Node built-in; previously `better-sqlite3`). Tables: `loans`, `participants`, `payments`, `confirmations` (`src/lib/demo/db.ts`).
+- The database path is fixed to `data/loans.db` under the working directory (`src/lib/demo/db.ts`, line 5). A test cannot point at another file today.
+- `src/lib/demo/parsePaymentSms.ts` parses PayPal, Zelle, Venmo and Cash App SMS shapes. It returns amount in cents, sender hint, provider, and a confidence level.
+- `src/lib/demo/processInboundSms.ts` turns an inbound SMS into a recorded payment. `POST /demo/api/sms` and the `/demo/sms` simulator both use it. All of this code is the demo, reference only, not the architecture.
 - The dev server port is fixed to 3456 in `package.json`. `UAT.md` expects the app on :12001 and wireframes on :12000.
 - `UAT.md` refers to `scripts/uat-serve.sh`. That script is not in this repo.
 - `UAT.md` says UAT is not a CI gate. It says `rails-gate` owns lint, test and verify only.

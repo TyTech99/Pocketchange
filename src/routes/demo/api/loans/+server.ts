@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { createLoan, listLoans, centsToDollars, balanceRemainingCents, getParticipants } from '$lib/db';
+import { createLoan, listLoans, centsToDollars, balanceRemainingCents, getParticipants } from '$lib/demo/db';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async () => {

@@ -1,5 +1,5 @@
 import { json, text } from '@sveltejs/kit';
-import { processInboundSms } from '$lib/processInboundSms';
+import { processInboundSms } from '$lib/demo/processInboundSms';
 import type { RequestHandler } from './$types';
 
 /**

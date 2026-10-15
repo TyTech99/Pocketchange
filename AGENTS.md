@@ -27,4 +27,4 @@ Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth; also pers
 - Branch: `main` only.
 - History: see `git log`. The first commits are `9e80a91` (initial, grokbot_ty) and `5c4fb21` (Ty, 2026-09-28).
 - UAT ports: wireframes `:12000`, Svelte app `:12001` (`/workspace/agent-rails-uat/UAT.md`).
-- Prototype source: the repo root (`src/`). It uses `node:sqlite`. Hostinger builds it as a Node.js web app from `main`.
+- The earlier prototype is reference material in `src/routes/demo/` and `src/lib/demo/` (served at `/demo/`). It is not the architecture. It uses `node:sqlite`. Hostinger builds the repo as a Node.js web app from `main`.

@@ -13,11 +13,11 @@
 <h1>SMS simulator</h1>
 <p class="lede">
   Paste a payment SMS the way a borrower would forward it. Hits the same path as the Twilio webhook
-  (<code>POST /api/sms</code>).
+  (<code>POST /demo/api/sms</code>).
 </p>
 
 {#if data.loans.length === 0}
-  <p class="err">Create a loan first — <a href="/create">Create loan</a></p>
+  <p class="err">Create a loan first — <a href="/demo/create">Create loan</a></p>
 {:else}
   <form method="POST" class="form">
     <label>
@@ -68,7 +68,7 @@
       <strong>${form.amount}</strong> on “{form.loanTitle}”.
       Balance remaining: <strong class="green">${form.remaining}</strong>
     </p>
-    <p><a href="/loan/{form.loanId}">View loan detail →</a></p>
+    <p><a href="/demo/loan/{form.loanId}">View loan detail →</a></p>
     <h3>Confirmations (would SMS all participants)</h3>
     <ul class="confs">
       {#each form.confirmations as c}

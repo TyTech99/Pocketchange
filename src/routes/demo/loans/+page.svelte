@@ -10,19 +10,19 @@
     <strong>OAuth agent demo</strong>
     <span>$200 vet bill · Household tab · via-agent audit · human-in-loop prefs</span>
   </div>
-  <a class="btn" href="/oauth-agent">Open walkthrough</a>
+  <a class="btn" href="/demo/oauth-agent">Open walkthrough</a>
 </div>
 
 {#if data.loans.length === 0}
   <div class="empty">
     <p>No loans yet.</p>
-    <a class="btn" href="/create">Create your first loan</a>
+    <a class="btn" href="/demo/create">Create your first loan</a>
   </div>
 {:else}
   <ul class="list">
     {#each data.loans as loan}
       <li>
-        <a href="/loan/{loan.id}" class="card">
+        <a href="/demo/loan/{loan.id}" class="card">
           <div class="row">
             <strong>{loan.title}</strong>
             <span class="bal">${loan.remaining} left</span>

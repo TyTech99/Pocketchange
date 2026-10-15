@@ -7,7 +7,7 @@ import {
   paidTotalCents,
   balanceRemainingCents,
   centsToDollars
-} from '$lib/db';
+} from '$lib/demo/db';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
