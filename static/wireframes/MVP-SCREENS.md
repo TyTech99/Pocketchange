@@ -1,4 +1,4 @@
-# PLT MVP — screen sketches
+# Pocket Change MVP — screen sketches
 
 Mobile-first. Chat/SMS is the daily driver doorbell; these screens are magic-link web.
 
@@ -47,11 +47,11 @@ Wireframes: `static/wireframes/sms-templates.html`, `static/wireframes/handoff.h
 ### Key template wording
 
 ```
-Invite:  Ty wants to set up a friends & family loan tracker with you on PLT.
+Invite:  Ty wants to set up a friends & family loan tracker with you on Pocket Change.
          Not a bill. Not a charge. We never touch money.
          Open only if you know them: [link]
 
-OTP:     PLT code: 482917. Enter it on the page. Never share this code.
+OTP:     Pocket Change code: 482917. Enter it on the page. Never share this code.
 
 Agree:   Boat terms ready. Open to agree or request a change: [link]
 
@@ -78,7 +78,7 @@ Free-text ack: Got it. Open to tell us: [link]
 ## 1. Home — My loans
 ```
 ┌─────────────────────────────┐
-│ Personal Loan Tracker       │
+│ Pocket Change       │
 │ F&F tracker · no money moved│
 ├─────────────────────────────┤
 │ [ + Propose a loan ]        │
@@ -195,7 +195,7 @@ SMS delivers code only → enter on web (or inline OTP then continue to web).
 ---
 
 ## 4. Invite SMS / email (doorbell — not a full screen)
-> Ty wants to set up a **friends & family loan tracker** with you on PLT.  
+> Ty wants to set up a **friends & family loan tracker** with you on Pocket Change.  
 > Not a bill. Not a charge. We never touch money.  
 > Open only if you know them: [magic link]
 
@@ -432,6 +432,6 @@ Wireframes `pile-on.html` / `pile-on-confirm.html` remain only as marked-depreca
 
 ## Agent/API parity (MVP sketch)
 
-The agent API is another client of these screens and lifecycle rules, not a shortcut around them. OAuth 2.1 + PKCE scoped tokens identify the consenting user and agent; every mutation is an audited, idempotent intent (`propose`, `agree`, `apply_payment`, `clarify`, or `addon` for **tab add-on only** — not fixed pile-on rebalance). Agents can assist with propose/agree/payment flows, but terms still require mutual agree and payment application only records evidence/ledger state—PLT never moves money. MCP is optional later on the same tokens. See [`MVP-API.md`](MVP-API.md).
+The agent API is another client of these screens and lifecycle rules, not a shortcut around them. OAuth 2.1 + PKCE scoped tokens identify the consenting user and agent; every mutation is an audited, idempotent intent (`propose`, `agree`, `apply_payment`, `clarify`, or `addon` for **tab add-on only** — not fixed pile-on rebalance). Agents can assist with propose/agree/payment flows, but terms still require mutual agree and payment application only records evidence/ledger state—Pocket Change never moves money. MCP is optional later on the same tokens. See [`MVP-API.md`](MVP-API.md).
 
 Decisioning explore: **Jev** in `MVP-API.md` (not a stack replace). **OAuth agent demo wireframes:** `oauth-agent.html` (flow) · `oauth-agent-consent.html` · `oauth-agent-draft.html` ($200 vet / $50 Fri Household tab) · `oauth-agent-agree.html` · `oauth-agent-ledger.html` · `oauth-agent-prefs.html`. Linked from `map.html` / `index.html`.

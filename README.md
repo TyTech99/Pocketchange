@@ -1,6 +1,6 @@
 # Pocket Change
 
-**Pocket Change** (working names: personalloantracker / PLT) is a Ty Tech prototype for tracking friends-and-family IOUs.
+**Pocket Change** is a Ty Tech project for tracking friends-and-family IOUs.
 
 Borrowers forward PayPal/Zelle/etc. payment SMS; the app records the payment, texts participants a confirmation, and shows the running balance left. **Pocket Change never moves money** — it records payment evidence and shared ledger state only.
 

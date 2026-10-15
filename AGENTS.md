@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth; also personalloantracker / PLT). This file says which bot owns what. Details are in `docs/bots/`.
+Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth). This file says which bot owns what. Details are in `docs/bots/`.
 
 ## Bots
 
@@ -8,7 +8,7 @@ Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth; also pers
 |---|---|---|
 | PocketChange Launch | Path from wireframes to live production | [docs/bots/pocketchange-launch.md](docs/bots/pocketchange-launch.md) |
 | PocketChange | Project orchestration: repo layout, agent-rails graft, UAT plans | [docs/bots/pocketchange.md](docs/bots/pocketchange.md) |
-| loanbot | Personal Loan Tracker prototype build | [docs/bots/loanbot.md](docs/bots/loanbot.md) |
+| loanbot | Pocket Change prototype build | [docs/bots/loanbot.md](docs/bots/loanbot.md) |
 
 ## Other actors
 

@@ -74,7 +74,7 @@
 </script>
 
 <svelte:head>
-  <title>OAuth agent flow · Personal Loan Tracker</title>
+  <title>OAuth agent flow · Pocket Change</title>
 </svelte:head>
 
 <div class="oauth-agent">

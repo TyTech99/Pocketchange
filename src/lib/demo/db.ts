@@ -275,7 +275,7 @@ export function recordPayment(opts: {
 
     for (const p of participants) {
       const body =
-        `Personal Loan Tracker: Payment of $${amountStr}${senderHint} recorded on "${loan.title}". ` +
+        `Pocket Change: Payment of $${amountStr}${senderHint} recorded on "${loan.title}". ` +
         `Balance remaining: $${remainingStr} of $${principalStr}.`;
       const confId = uid();
       insertConf.run(confId, paymentId, p.phone, p.name, body);

@@ -3,12 +3,12 @@
 </script>
 
 <svelte:head>
-  <title>Personal Loan Tracker (demo)</title>
+  <title>Pocket Change (demo)</title>
 </svelte:head>
 
 <div class="shell">
   <header class="top">
-    <a href="/demo/loans" class="brand">personalloantracker.io</a>
+    <a href="/demo/loans" class="brand">Pocket Change</a>
     <nav>
       <a href="/demo/loans">Loans</a>
       <a href="/demo/create">Create loan</a>

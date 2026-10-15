@@ -4,7 +4,7 @@ Agent id: `b3418946-b141-4a1f-a553-6f984bfb35b2`
 
 ## Owns
 
-- Building the Personal Loan Tracker prototype (working name personalloantracker.io).
+- Building the Pocket Change prototype.
 - Stack: SvelteKit and SQLite, in `/workspace/personalloantracker`.
 - A Twilio-ready inbound-SMS webhook and a dev simulator.
 

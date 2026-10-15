@@ -1,12 +1,12 @@
-# PLT MVP — Agent API + OAuth 2.1 sketch
+# Pocket Change MVP — Agent API + OAuth 2.1 sketch
 
-Status: MVP design sketch; endpoint names and JSON are provisional. This API is an additional client surface over the same Personal Loan Tracker rules used by web and SMS. It does not change the product stance: *friends & family loan tracker; we never touch your money.*
+Status: MVP design sketch; endpoint names and JSON are provisional. This API is an additional client surface over the same Pocket Change rules used by web and SMS. It does not change the product stance: *friends & family loan tracker; we never touch your money.*
 
 ## Non-negotiable boundaries
 
-- Agents are first-class PLT clients. An agent may help a person **propose**, **agree**, and record or clarify **payments**, subject to that person's delegated scopes.
+- Agents are first-class Pocket Change clients. An agent may help a person **propose**, **agree**, and record or clarify **payments**, subject to that person's delegated scopes.
 - An agent is never a hidden party to a loan and cannot consent for the other party. The same two-party **mutual agree** gate used by the web UI applies to API calls.
-- PLT records proposals, agreements, payment evidence, ledger applications, reminders, and audit history. PLT never holds, routes, initiates, or moves funds.
+- Pocket Change records proposals, agreements, payment evidence, ledger applications, reminders, and audit history. Pocket Change never holds, routes, initiates, or moves funds.
 - There is no `money:move`, bank/card write, payout, collection, or “auto-agree” permission in MVP.
 - Agent-originated work follows the same SMS doorbell/web handoff rule: complex terms, change requests, disputes, and clarification resolve on a page or an equivalent explicitly authorized API intent, not a multi-turn SMS wizard.
 
@@ -25,7 +25,7 @@ GET  https://auth.personalloantracker.io/.well-known/oauth-authorization-server
 
 An agent starts authorization with a registered `client_id`, exact pre-registered `redirect_uri`, `response_type=code`, `code_challenge`, `code_challenge_method=S256`, `state`, and the minimum requested scopes. OpenID Connect may add `nonce` and identity claims, but the API only trusts the resulting issuer/audience-bound access token.
 
-Access tokens are short-lived bearer tokens for the PLT API audience. Refresh tokens, when issued to an eligible client, rotate on use and can be revoked. The API validates issuer, audience, expiry, client, user subject, and scopes; it never accepts a caller-supplied user ID as proof of delegation.
+Access tokens are short-lived bearer tokens for the Pocket Change API audience. Refresh tokens, when issued to an eligible client, rotate on use and can be revoked. The API validates issuer, audience, expiry, client, user subject, and scopes; it never accepts a caller-supplied user ID as proof of delegation.
 
 ### Scopes (MVP sketch)
 
@@ -113,7 +113,7 @@ Authorization: Bearer <access-token>
 Idempotency-Key: pay_01...
 ```
 
-Records a receipt/evidence or a user's paid/partial/paid-off claim and asks PLT to match it to a loan. It may result in `pending_clarification`, `pending_confirmation`, or `applied` according to the loan's agreed receipt-trust setting. `applied` means a PLT ledger entry and dual notification—not a transfer. Ambiguous matches create one `clarify` intent; ignored clarification remains pending rather than triggering a chase loop.
+Records a receipt/evidence or a user's paid/partial/paid-off claim and asks Pocket Change to match it to a loan. It may result in `pending_clarification`, `pending_confirmation`, or `applied` according to the loan's agreed receipt-trust setting. `applied` means a Pocket Change ledger entry and dual notification—not a transfer. Ambiguous matches create one `clarify` intent; ignored clarification remains pending rather than triggering a chase loop.
 
 ### `clarify`
 
@@ -139,7 +139,7 @@ Proposes a **running-tab add-on**: amount, note/evidence, and yardstick preview 
 
 ## Webhooks and events
 
-A user with `webhooks:manage` may register an HTTPS endpoint. Deliveries use a unique `event_id`, `delivery_id`, event type, resource version, and a timestamped HMAC signature (for example `X-PLT-Signature: t=...,v1=...`). Consumers must verify the signature, reject stale timestamps, deduplicate `event_id`, and return a 2xx only after durable handling. PLT retries with backoff; delivery is at-least-once, not exactly-once.
+A user with `webhooks:manage` may register an HTTPS endpoint. Deliveries use a unique `event_id`, `delivery_id`, event type, resource version, and a timestamped HMAC signature (for example `X-Pocket Change-Signature: t=...,v1=...`). Consumers must verify the signature, reject stale timestamps, deduplicate `event_id`, and return a 2xx only after durable handling. Pocket Change retries with backoff; delivery is at-least-once, not exactly-once.
 
 Initial event vocabulary:
 

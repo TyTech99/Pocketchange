@@ -1,8 +1,8 @@
-# Personal Loan Tracker — MVP use cases
+# Pocket Change — MVP use cases
 
-Working name: personalloantracker.io  
+Working name: Pocket Change  
 Primary user: friends & family (Ty → kids first).  
-PLT never touches money.
+Pocket Change never touches money.
 
 ## Stance
 
@@ -120,7 +120,7 @@ Use case: product must not turn SMS into a chatbot.
 Use case: borrower (or lender) forwards a payment screenshot or receipt.
 
 1. **Prefer email** to `payment@personalloantracker.io` (including pasting an SMS receipt into email).
-2. If they **MMS/SMS** a screenshot/receipt to the PLT number → same parser path as email.
+2. If they **MMS/SMS** a screenshot/receipt to the Pocket Change number → same parser path as email.
 3. On clear match (loan + amount): post ledger → **confirm SMS one-liner to both** (`Boat: $50 applied · $420 left`). No ask.
 4. On ambiguous (multi-loan / odd amount / unknown): **ONE** clarify SMS with tap choices or link to `clarify.html`. If ignored → mark pending in notebook; do not chase.
 5. Wait-for-confirm trust: same path, but lender confirms on web (or one handoff) before posting.
@@ -137,7 +137,7 @@ When Mom/Dad (or either party) covers a small extra (electric, vet, groceries, c
 
 Flow (canonical under SMS paradigm) for tab add-on:
 1. Lender texts something like: `Sent John $65 for groceries` (or forwards a receipt).
-2. PLT: if tab clear → **one handoff SMS**: `Mom wants to add $65 to Household tab (groceries). Open: [link]`. If ambiguous → ONE fork, then handoff.
+2. Pocket Change: if tab clear → **one handoff SMS**: `Mom wants to add $65 to Household tab (groceries). Open: [link]`. If ambiguous → ONE fork, then handoff.
 3. On **web** (`tab-addon.html`): amount + note + yardstick preview only.
 4. Soft confirm to other party via **handoff SMS** → `tab-addon-confirm.html` (mutual).
 5. Ledger updates · dual-notify one-liner.
