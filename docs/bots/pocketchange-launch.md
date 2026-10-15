@@ -27,4 +27,4 @@ Agent id: `312cac8d-0323-43ce-8377-3c4c57491ee2`
 ## Evidence
 
 - Agent profile: `/home/box/agent-data/agents/312cac8d-0323-43ce-8377-3c4c57491ee2/profile.json`.
-- Created 2026-10-14. Repo commit: `6199c66` (node:sqlite decision record).
+- Created 2026-10-14. Repo commit: `d38a8af` (housekeeping cleanup).
