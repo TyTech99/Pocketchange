@@ -7,14 +7,6 @@ Talk: https://x.com/poteto/status/2102050467505430555
 
 This file was ported from the generic `agent-rails` scaffold and adapted to Pocket Change: SvelteKit, TypeScript, `node:sqlite`, Node 22.13 or newer, GitHub Actions, Hostinger Node.js deploy.
 
-## Status
-
-Status when this file was written. Delete this section when PR #8 merges.
-
-- The gate is `.github/workflows/rails-gate.yml`. It runs the jobs `lint`, `test` and `verify`.
-- The gate, `scripts/lint.sh`, `scripts/test.sh`, `scripts/verify.sh`, `.github/CODEOWNERS` and `tests/unit/` land with PR #8. They are not on `main` yet.
-- Until PR #8 merges, no script or CI run can prove "done". Say so; do not claim green.
-
 ## Strong → weak
 
 | # | Rung | What it is | In this repo |
