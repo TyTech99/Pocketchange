@@ -24,4 +24,4 @@ Agent id: `90385cbd-998c-4a0b-8e18-6b5766f1fa1d`
 ## Evidence
 
 - Agent profile: `/home/box/agent-data/agents/90385cbd-998c-4a0b-8e18-6b5766f1fa1d/profile.json`.
-- UAT docs: `/workspace/agent-rails-uat/UAT.md`, `ORCHESTRATOR.md`. They do not name this bot.
+- UAT ports and how the plan reconciles with the UAT docs: `docs/plans/2026-10-14-tdd-and-e2e-strategy.md`, section "Reconciliation with UAT.md".

@@ -3,7 +3,7 @@
 Status: **proposed**. Needs Ty's approval.
 Owner: PocketChange Launch (data and workflow definition). OpenCode writes tests, seed script and code.
 Date: 2026-10-14
-Narrows: the proposed `docs/plans/tdd-and-e2e-strategy.md` (not yet in the repo). This plan covers only the first workflow and the data spine. The larger catalog in that document waits.
+Narrows: the proposed `docs/plans/2026-10-14-tdd-and-e2e-strategy.md` (not yet in the repo). This plan covers only the first workflow and the data spine. The larger catalog in that document waits.
 
 ## Summary
 
@@ -23,7 +23,7 @@ Narrows: the proposed `docs/plans/tdd-and-e2e-strategy.md` (not yet in the repo)
 - Known gap 2: the database path is fixed at `data/loans.db` (`src/lib/demo/db.ts`, line 5). A test cannot point the app at another file.
 - Both gaps are recorded here and are **not fixed in this plan**. They block running the seeded database under the app. Fixing them is a later change.
 - `.gitignore` already ignores `data/*.db` and `data/*.db-*`, so throwaway databases stay out of git.
-- Requirement sources: `MVP-USE-CASES.md` ("Reminders & late", "Repayment", "Lifecycle"), `MVP-SCREENS.md` §2d and §8.
+- Requirement sources: `docs/product/MVP-USE-CASES.md` ("Reminders & late", "Repayment", "Lifecycle"), `docs/product/MVP-SCREENS.md` §2d and §8.
 
 ## Terminology
 
@@ -121,7 +121,7 @@ The requirements do not say these things. The criteria above rely on them.
 
 - Late policy is a fixture field. The late-payment workflow overrides it per case (L1 to L6).
 - B1 is the main contract. B2 and T1 are defined now so the spine is stable, and used when their workflows are written.
-- Contract terms use the product's own words and fields from `MVP-USE-CASES.md`.
+- Contract terms use the product's own words and fields from `docs/product/MVP-USE-CASES.md`.
 
 ### Payments (example data)
 

@@ -425,13 +425,13 @@ Entry via SMS handoff link. Resolve on page.
 **Locked (Ty 2026-09-26):** A funded fixed-purpose loan stays the agreed contract. Do **not** pile-on / rebalance keep-length vs keep-payment on established fixed loans.
 
 **Use instead:**
-- Incidental extras → **tab add-on** (§11c) / `tab-addon.html`
-- Real new purpose → **propose a new fixed-purpose loan** / `propose.html`
+- Incidental extras → **tab add-on** (§11c) / `static/wireframes/tab-addon.html`
+- Real new purpose → **propose a new fixed-purpose loan** / `static/wireframes/propose.html`
 
-Wireframes `pile-on.html` / `pile-on-confirm.html` remain only as marked-deprecated historical pages (redirect note + links to tab-addon + propose).
+Wireframes `static/wireframes/pile-on.html` / `static/wireframes/pile-on-confirm.html` remain only as marked-deprecated historical pages (redirect note + links to tab-addon + propose).
 
 ## Agent/API parity (MVP sketch)
 
 The agent API is another client of these screens and lifecycle rules, not a shortcut around them. OAuth 2.1 + PKCE scoped tokens identify the consenting user and agent; every mutation is an audited, idempotent intent (`propose`, `agree`, `apply_payment`, `clarify`, or `addon` for **tab add-on only** — not fixed pile-on rebalance). Agents can assist with propose/agree/payment flows, but terms still require mutual agree and payment application only records evidence/ledger state—Pocket Change never moves money. MCP is optional later on the same tokens. See [`MVP-API.md`](MVP-API.md).
 
-Decisioning explore: **Jev** in `MVP-API.md` (not a stack replace). **OAuth agent demo wireframes:** `oauth-agent.html` (flow) · `oauth-agent-consent.html` · `oauth-agent-draft.html` ($200 vet / $50 Fri Household tab) · `oauth-agent-agree.html` · `oauth-agent-ledger.html` · `oauth-agent-prefs.html`. Linked from `map.html` / `index.html`.
+Decisioning explore: **Jev** in `MVP-API.md` (not a stack replace). **OAuth agent demo wireframes:** `static/wireframes/oauth-agent.html` (flow) · `static/wireframes/oauth-agent-consent.html` · `static/wireframes/oauth-agent-draft.html` ($200 vet / $50 Fri Household tab) · `static/wireframes/oauth-agent-agree.html` · `static/wireframes/oauth-agent-ledger.html` · `static/wireframes/oauth-agent-prefs.html`. Linked from `static/wireframes/map.html` / `static/wireframes/index.html`.
