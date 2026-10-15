@@ -1,4 +1,4 @@
-import Database from 'better-sqlite3';
+import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'fs';
 import { dirname, join } from 'path';
 
@@ -6,9 +6,20 @@ const DB_PATH = join(process.cwd(), 'data', 'loans.db');
 
 mkdirSync(dirname(DB_PATH), { recursive: true });
 
-const db = new Database(DB_PATH);
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
+const db = new DatabaseSync(DB_PATH);
+db.exec('PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;');
+
+function tx<T>(fn: () => T): T {
+  db.exec('BEGIN');
+  try {
+    const r = fn();
+    db.exec('COMMIT');
+    return r;
+  } catch (e) {
+    db.exec('ROLLBACK');
+    throw e;
+  }
+}
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS loans (
@@ -107,29 +118,29 @@ function uid(): string {
 }
 
 export function listLoans(): Loan[] {
-  return db.prepare('SELECT * FROM loans ORDER BY created_at DESC').all() as Loan[];
+  return db.prepare('SELECT * FROM loans ORDER BY created_at DESC').all() as unknown as Loan[];
 }
 
 export function getLoan(id: string): Loan | undefined {
-  return db.prepare('SELECT * FROM loans WHERE id = ?').get(id) as Loan | undefined;
+  return db.prepare('SELECT * FROM loans WHERE id = ?').get(id) as unknown as Loan | undefined;
 }
 
 export function getParticipants(loanId: string): Participant[] {
   return db
     .prepare('SELECT * FROM participants WHERE loan_id = ? ORDER BY role DESC, name')
-    .all(loanId) as Participant[];
+    .all(loanId) as unknown as Participant[];
 }
 
 export function getPayments(loanId: string): Payment[] {
   return db
     .prepare('SELECT * FROM payments WHERE loan_id = ? ORDER BY created_at DESC')
-    .all(loanId) as Payment[];
+    .all(loanId) as unknown as Payment[];
 }
 
 export function getConfirmationsForPayment(paymentId: string): Confirmation[] {
   return db
     .prepare('SELECT * FROM confirmations WHERE payment_id = ? ORDER BY created_at')
-    .all(paymentId) as Confirmation[];
+    .all(paymentId) as unknown as Confirmation[];
 }
 
 export function getConfirmationsForLoan(loanId: string): Confirmation[] {
@@ -140,13 +151,13 @@ export function getConfirmationsForLoan(loanId: string): Confirmation[] {
        WHERE p.loan_id = ?
        ORDER BY c.created_at DESC`
     )
-    .all(loanId) as Confirmation[];
+    .all(loanId) as unknown as Confirmation[];
 }
 
 export function paidTotalCents(loanId: string): number {
   const row = db
     .prepare('SELECT COALESCE(SUM(amount_cents), 0) AS total FROM payments WHERE loan_id = ?')
-    .get(loanId) as { total: number };
+    .get(loanId) as unknown as { total: number };
   return row.total;
 }
 
@@ -174,7 +185,7 @@ export function createLoan(input: CreateLoanInput): Loan {
     `INSERT INTO participants (id, loan_id, name, phone, role) VALUES (?, ?, ?, ?, ?)`
   );
 
-  const tx = db.transaction(() => {
+  tx(() => {
     insertLoan.run(id, input.title.trim(), principal_cents, input.notes?.trim() || null);
     insertParticipant.run(
       uid(),
@@ -188,7 +199,6 @@ export function createLoan(input: CreateLoanInput): Loan {
       insertParticipant.run(uid(), id, b.name.trim(), normalizePhone(b.phone), 'borrower');
     }
   });
-  tx();
   return getLoan(id)!;
 }
 
@@ -211,10 +221,10 @@ export function findLoanForInbound(fromPhone: string | null | undefined): Loan |
          WHERE p.phone = ? OR p.phone = ? OR REPLACE(p.phone, '+', '') = ?
          ORDER BY l.created_at DESC LIMIT 1`
       )
-      .get(normalized, fromPhone, normalized.replace('+', '')) as Loan | undefined;
+      .get(normalized, fromPhone, normalized.replace('+', '')) as unknown as Loan | undefined;
     if (row) return row;
   }
-  return db.prepare('SELECT * FROM loans ORDER BY created_at DESC LIMIT 1').get() as
+  return db.prepare('SELECT * FROM loans ORDER BY created_at DESC LIMIT 1').get() as unknown as
     | Loan
     | undefined;
 }
@@ -244,7 +254,7 @@ export function recordPayment(opts: {
 
   const confirmations: Confirmation[] = [];
 
-  const tx = db.transaction(() => {
+  tx(() => {
     insertPayment.run(
       paymentId,
       opts.loanId,
@@ -279,9 +289,8 @@ export function recordPayment(opts: {
       });
     }
   });
-  tx();
 
-  const payment = db.prepare('SELECT * FROM payments WHERE id = ?').get(paymentId) as Payment;
+  const payment = db.prepare('SELECT * FROM payments WHERE id = ?').get(paymentId) as unknown as Payment;
   return {
     payment,
     confirmations: getConfirmationsForPayment(paymentId),

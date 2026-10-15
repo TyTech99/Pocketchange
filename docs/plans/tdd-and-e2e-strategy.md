@@ -16,7 +16,7 @@ Date: 2026-10-14
 
 - `package.json` has `dev`, `build`, `preview`, `start`. It has no `test` script and no test dependencies.
 - The repo has no `tests/` folder, no `scripts/` folder, and no CI config.
-- The prototype is SvelteKit with `better-sqlite3`. Tables: `loans`, `participants`, `payments`, `confirmations` (`src/lib/db.ts`).
+- The prototype is SvelteKit with `node:sqlite` (Node built-in; previously `better-sqlite3`). Tables: `loans`, `participants`, `payments`, `confirmations` (`src/lib/db.ts`).
 - The database path is fixed to `data/loans.db` under the working directory (`src/lib/db.ts`, line 5). A test cannot point at another file today.
 - `src/lib/parsePaymentSms.ts` parses PayPal, Zelle, Venmo and Cash App SMS shapes. It returns amount in cents, sender hint, provider, and a confidence level.
 - `src/lib/processInboundSms.ts` turns an inbound SMS into a recorded payment. `POST /api/sms` and the `/sms` simulator both use it.
