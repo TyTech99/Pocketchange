@@ -39,9 +39,9 @@ GitHub (`TyTech99/Pocketchange`, `main`) is the source of truth. Hostinger build
 
 ## Docs & wireframes
 
-- [MVP use cases](MVP-USE-CASES.md) — lifecycle, SMS doorbell, repayment, and guardrails
-- [MVP screens](MVP-SCREENS.md) — web/magic-link screen sketches
-- [MVP Agent API + OAuth 2.1 sketch](MVP-API.md) — delegated agent client, scoped tokens, intents, events, and audit boundaries
+- [MVP use cases](docs/product/MVP-USE-CASES.md) — lifecycle, SMS doorbell, repayment, and guardrails
+- [MVP screens](docs/product/MVP-SCREENS.md) — web/magic-link screen sketches
+- [MVP Agent API + OAuth 2.1 sketch](docs/product/MVP-API.md) — delegated agent client, scoped tokens, intents, events, and audit boundaries
 - [Wireframes](static/wireframes/) — HTML/PNG mockups (start at [static/wireframes/map.html](static/wireframes/map.html)); served at `/wireframes/` on the preprod site
 
 Agents use the same mutual-agree lifecycle as the web UI.

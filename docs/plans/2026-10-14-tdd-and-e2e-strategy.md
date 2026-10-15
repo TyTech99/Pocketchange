@@ -10,7 +10,7 @@ Date: 2026-10-14
 - The center of the strategy is a catalog of end-to-end scenarios. Each scenario is built from sample contracts and sample payments.
 - Sample data lives in versioned fixtures. A seed script loads them into a throwaway database.
 - Evidence of each run goes to `artifacts/test-output/`.
-- UAT (`/workspace/agent-rails-uat/UAT.md`) stays the manual preview step. Automated tests are a separate gate.
+- UAT (see "Reconciliation with UAT.md" below) stays the manual preview step. Automated tests are a separate gate.
 
 ## Facts (verified in repo at 4776670)
 
@@ -23,12 +23,12 @@ Date: 2026-10-14
 - The dev server port is fixed to 3456 in `package.json`. `UAT.md` expects the app on :12001 and wireframes on :12000.
 - `UAT.md` refers to `scripts/uat-serve.sh`. That script is not in this repo.
 - `UAT.md` says UAT is not a CI gate. It says `rails-gate` owns lint, test and verify only.
-- `MVP-USE-CASES.md` defines the lifecycle, pricing modes, schedule cadences, repayment trust modes, late-fee policies, tab add-ons and anti-spam rules.
-- `MVP-USE-CASES.md` says "Ty → kids first". It has no gift scenario.
+- `docs/product/MVP-USE-CASES.md` defines the lifecycle, pricing modes, schedule cadences, repayment trust modes, late-fee policies, tab add-ons and anti-spam rules.
+- `docs/product/MVP-USE-CASES.md` says "Ty → kids first". It has no gift scenario.
 
 ## Assumptions
 
-- The prototype implements only part of `MVP-USE-CASES.md`. I have not checked which lifecycle states and pricing modes the code supports. The first step is a gap list.
+- The prototype implements only part of `docs/product/MVP-USE-CASES.md`. I have not checked which lifecycle states and pricing modes the code supports. The first step is a gap list.
 - Email forward, MMS, OTP and magic links are specified but not built. Their scenarios start as pending tests.
 
 ## Part 1. TDD in the dev cycle
@@ -225,6 +225,6 @@ W1 to W6 are first priority because they cover the money path in the prototype. 
 | What | Owner | When |
 |---|---|---|
 | Approve or edit this plan | Ty | Before any code change |
-| Produce a gap list: which `MVP-USE-CASES.md` states the prototype implements | PocketChange Launch | After approval |
+| Produce a gap list: which `docs/product/MVP-USE-CASES.md` states the prototype implements | PocketChange Launch | After approval |
 | Add test tooling and the first three red tests | OpenCode | After approval |
 | Plan the rails graft that brings `uat-serve.sh` | PocketChange bot | After approval |

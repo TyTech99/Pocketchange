@@ -119,9 +119,9 @@ Screenshots (if present): `home.png`, `agree.png`, `active.png`.
 
 The served markdown copies are part of the wireframes folder so they can be opened from the same host:
 
-- [`MVP-API.md`](MVP-API.md) — Pocket Change agent API, OAuth 2.1 + PKCE, scoped act-as-user tokens, audit, intents, events, and roadmap
-- [`MVP-USE-CASES.md`](MVP-USE-CASES.md) — lifecycle and product guardrails
-- [`MVP-SCREENS.md`](MVP-SCREENS.md) — screen sketches and SMS/web handoffs
+- [`MVP-API.md`](../../docs/product/MVP-API.md) — Pocket Change agent API, OAuth 2.1 + PKCE, scoped act-as-user tokens, audit, intents, events, and roadmap
+- [`MVP-USE-CASES.md`](../../docs/product/MVP-USE-CASES.md) — lifecycle and product guardrails
+- [`MVP-SCREENS.md`](../../docs/product/MVP-SCREENS.md) — screen sketches and SMS/web handoffs
 
 Agents are first-class clients of the same propose/agree/payment flows. Mutual agree remains mandatory; Pocket Change records payment evidence but never moves money. MCP is optional later and must use the same tokens and audit boundaries.
 

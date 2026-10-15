@@ -7,6 +7,7 @@ Plan of record. Text only. Evidence goes in `../artifacts/`.
 | Path | Holds |
 |---|---|
 | `bots/` | One role file per bot. See `../AGENTS.md`. |
+| `product/` | Product requirements: `MVP-USE-CASES.md`, `MVP-SCREENS.md`, `MVP-API.md`. `MVP-SCREENS.md` follows the wireframes in `../static/wireframes/`. |
 | `plans/` | Plans: launch plan, UAT plans, graft plans. One file per plan. |
 | `decisions/` | Decision records: what was decided, by whom, when, and why. |
 
@@ -26,4 +27,4 @@ Plan of record. Text only. Evidence goes in `../artifacts/`.
 - The demo is reference material in `src/routes/demo/` and `src/lib/demo/`. The real app is designed from the product requirements, not from the demo.
 - Wireframes, the demo, and production code never share a directory.
 - Each plan and decision file names an owner and a date.
-- Source for the ports: `/workspace/agent-rails-uat/UAT.md`.
+- UAT ports are explained in `plans/2026-10-14-tdd-and-e2e-strategy.md`.

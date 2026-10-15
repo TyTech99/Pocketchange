@@ -4,8 +4,8 @@ Agent id: `b3418946-b141-4a1f-a553-6f984bfb35b2`
 
 ## Owns
 
-- Building the Pocket Change prototype.
-- Stack: SvelteKit and SQLite, in `/workspace/personalloantracker`.
+- Built the Pocket Change prototype. It is now reference material in `src/routes/demo/` and `src/lib/demo/`, not the architecture.
+- Stack: SvelteKit and SQLite (`node:sqlite`).
 - A Twilio-ready inbound-SMS webhook and a dev simulator.
 
 ## Limits
@@ -18,6 +18,6 @@ Agent id: `b3418946-b141-4a1f-a553-6f984bfb35b2`
 ## Evidence
 
 - Agent profile: `/home/box/agent-data/agents/b3418946-b141-4a1f-a553-6f984bfb35b2/profile.json`.
-- `MVP-USE-CASES.md`: "Captured from Ty + loanbot product conversation, 2026-09-25 PT."
-- `/workspace/personalloantracker` matches the content of commit `5c4fb21`. It includes `demo-balance.png`.
+- `docs/product/MVP-USE-CASES.md`: "Captured from Ty + loanbot product conversation, 2026-09-25 PT."
+- The prototype code is in `src/routes/demo/` and `src/lib/demo/`. Its screenshot is `artifacts/screenshots/2026-10-14-demo-balance.png`.
 - Inference, not confirmed by transcripts: loanbot built the prototype and docs that became the repo's content.
