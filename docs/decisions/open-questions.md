@@ -59,6 +59,7 @@ Added 2026-10-14 after the Hermes lookup and the runtime and Hostinger discussio
 | D1 | Is Hermes a PocketChange product agent, a dev-process companion, or out of scope? | Open | 2026-10-14 | Hermes lookup; the requirements are silent on Hermes |
 | D2 | Which model or provider powers the generic inference plumbing outside Jev: OpenAI API or another? | Open | 2026-10-14 | Runtime discussion; the docs name no provider for non-Jev inference |
 | D3 | How does PocketChange deploy on Hostinger shared hosting: a GitHub mirror feeding the Hostinger GitHub deploy hook, with Gitea as system of record? | Open | 2026-10-14 | Hostinger discussion |
+| D4 | Should Hostinger deploy only a public subfolder instead of the whole repo? The site currently serves all repo files publicly (docs, wireframes, package.json readable by URL); no secrets found but internal plans and bot role files are exposed. | Open | 2026-10-14 | Hostinger deploy check of pocketchange.afterthedemo.com |
 
 ## Rules
 
