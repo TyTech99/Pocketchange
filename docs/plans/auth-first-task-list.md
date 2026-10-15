@@ -11,19 +11,20 @@ Date: 2026-10-14
 - Tests can read the code without real delivery. The recommended hook is a test-only outbox endpoint, off by default.
 - After auth comes the existing e2e spine: test harness, sample data, then the late-payment workflow.
 
-## Facts (verified in repo at 7287a7b)
+## Facts (verified in repo at 6232357)
 
-- The app has no auth. Every route is open: `/create`, `/loans`, `/loan/[id]`, `/sms`, `/oauth-agent`, `POST /api/sms`, `GET|POST /api/loans`.
-- The site `pocketchange.afterthedemo.com` is public, so these routes are public today.
-- The tables are `loans`, `participants`, `payments`, `confirmations`. There is no user, code, or session table.
-- `POST /api/sms` is written as a Twilio webhook. Twilio cannot send a login session with it.
-- `MVP-USE-CASES.md` and `MVP-SCREENS.md` already specify a drafter OTP before invites, a "Verify it's you" screen, and magic links. None of it is built.
+- The app has no auth. Every route is open. The prototype routes live under `/demo/` (`src/routes/demo/`): `/demo/create`, `/demo/loans`, `/demo/loan/[id]`, `/demo/sms`, `/demo/oauth-agent`, `POST /demo/api/sms`, `GET|POST /demo/api/loans`.
+- Root `/` is a Hello World placeholder. `src/hooks.server.ts` is an empty placeholder.
+- The preprod site `pocketchange.afterthedemo.com` is public, so these routes are public today.
+- The tables are `loans`, `participants`, `payments`, `confirmations` (`src/lib/demo/db.ts`, via `node:sqlite`). There is no user, code, or session table.
+- `POST /demo/api/sms` is written as a Twilio webhook. Twilio cannot send a login session with it.
+- `docs/product/MVP-USE-CASES.md` and `docs/product/MVP-SCREENS.md` already specify a drafter OTP before invites, a "Verify it's you" screen, and magic links. None of it is built.
 
 ## Assumptions (need Ty's confirmation)
 
 1. The code is delivered by email. The identity is the email address.
 2. Session is a signed, HTTP-only cookie.
-3. Public pages stay public: `/`, `/wireframes/`, `/login`, and `/verify`.
+3. Public pages stay public: `/`, `/wireframes/`, `/login`, and `/verify`. Everything under `/demo/` is gated.
 4. Defaults for the code rules: six digits, expires in 10 minutes, single use, five wrong tries, 60 seconds between resends.
 
 ## Task list
@@ -37,22 +38,22 @@ Date: 2026-10-14
 | A3 | Data model: `users`, `login_codes` (store a hash, never the code), `sessions`. | Migration runs on a throwaway database. | OpenCode |
 | A4 | Code delivery behind one interface: `send(email, code)`. Real provider in production, in-memory outbox in test mode. | Tests swap the sender without changing app code. | OpenCode |
 | A5 | Test hook. See the section below. | Tests get the code with no real delivery. The hook is provably off in production. | OpenCode |
-| A6 | Gate every operation behind a verified session. Pages redirect to `/login`. API routes return 401. | Scenarios A2 pass. | OpenCode |
+| A6 | Gate every operation behind a verified session. Pages redirect to `/login`. API routes return 401. Today this covers the `/demo/*` routes. Production routes follow the same rule when they exist. | Scenarios A2 pass. | OpenCode |
 | A7 | Run the auth scenarios on the preprod site with test mode off. | An unverified request is rejected on the live site. | PocketChange Launch |
 
 ### Phase 1. The existing e2e spine
 
 | # | Task | Source | Owner |
 |---|---|---|---|
-| E1 | Harness prerequisites: database path and app port from environment, a `test` script, the Vitest and Playwright decision. | `tdd-and-e2e-strategy.md`, decisions B4 and B5 | OpenCode |
-| E2 | Fixtures and seed script. Fixtures now include verified users and sessions. | `e2e-sample-data.md`, Part 2 | OpenCode |
-| E3 | Late-payment workflow W1, run by a verified user. | `e2e-sample-data.md`, Part 1 | OpenCode |
+| E1 | Harness prerequisites: database path and app port from environment, a `test` script, the Vitest and Playwright decision. | `2026-10-14-tdd-and-e2e-strategy.md`, decisions B4 and B5 | OpenCode |
+| E2 | Fixtures and seed script. Fixtures now include verified users and sessions. | `2026-10-14-e2e-sample-data.md`, Part 2 | OpenCode |
+| E3 | Late-payment workflow W1, run by a verified user. | `2026-10-14-e2e-sample-data.md`, Part 1 | OpenCode |
 | E4 | Remaining workflows after W1, in the priority order Ty sets. | Decision B6 | OpenCode |
-| E5 | UAT run and evidence in `artifacts/test-output/`. | `tdd-and-e2e-strategy.md` | PocketChange Launch |
+| E5 | UAT run and evidence in `artifacts/test-output/`. | `2026-10-14-tdd-and-e2e-strategy.md` | PocketChange Launch |
 
 ## Auth e2e scenarios (task A2)
 
-1. Unverified: create loan, view loans, view one loan, simulator, and `POST /api/sms` are all rejected. Pages redirect, API returns 401.
+1. Unverified: create loan, view loans, view one loan, simulator, and `POST /demo/api/sms` are all rejected. Pages redirect, API returns 401.
 2. Happy path: enter email, get code, enter code, then create a loan and view it.
 3. Wrong code: rejected. The fifth wrong try locks that code.
 4. Expired code: rejected after 10 minutes. The test moves the clock, it does not wait.
@@ -79,7 +80,7 @@ Fallback: a fixed code in test mode. Same safety rules apply.
 
 | # | Decision | Recommendation | Owner |
 |---|---|---|---|
-| D-A1 | `POST /api/sms` is a Twilio webhook and cannot carry a session. Does it authenticate with Twilio's request signature instead? | Yes. A verified user session covers the web simulator. A signature check covers the webhook. | Ty |
+| D-A1 | `POST /demo/api/sms` is a Twilio webhook and cannot carry a session. Does it authenticate with Twilio's request signature instead? | Yes. A verified user session covers the web simulator. A signature check covers the webhook. | Ty |
 | D-A2 | Which service sends the codes? None is chosen. | Pick one before A4. The sender interface keeps this swappable. | Ty |
 | D-A3 | Do borrowers and other participants (identified by phone today) also verify, or only the lender who creates the loan? | Start with the lender and any signed-in user. Borrower verification is a later task. | Ty |
 | D-A4 | Approve the code rules in assumption 4. | Approve as written. | Ty |
