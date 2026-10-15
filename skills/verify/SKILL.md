@@ -11,8 +11,6 @@ Prove work before claiming done.
 5. Drive the app like a user (below) for any change a user can see.
 6. Record evidence: command lines + exit codes (or the CI check URL). Test output goes to `artifacts/test-output/`.
 
-The scripts and the gate land with PR #8. Before that PR merges, steps 2–4 cannot run on `main`. See `docs/RAILS.md`, section "Status".
-
 ## Drive the app like a user
 
 Find the feature and its verify steps in [`../feature-map/FEATURE_MAP.md`](../feature-map/FEATURE_MAP.md).

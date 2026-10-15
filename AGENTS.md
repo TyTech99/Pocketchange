@@ -24,7 +24,7 @@ Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth). This fil
 
 ## Rails
 
-Short rules for **OpenCode**, **Hermes**, and **Grok Bot**. Full ladder: [`docs/RAILS.md`](docs/RAILS.md). The gate is `.github/workflows/rails-gate.yml` (PR #8). Until PR #8 merges, the gate and `scripts/` are not on `main`; see `docs/RAILS.md`, section "Status".
+Short rules for **OpenCode**, **Hermes**, and **Grok Bot**. Full ladder: [`docs/RAILS.md`](docs/RAILS.md). The gate is `.github/workflows/rails-gate.yml`.
 
 ### Mandatory
 

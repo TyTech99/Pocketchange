@@ -11,8 +11,8 @@ This file was ported from the generic `agent-rails` scaffold and adapted to Pock
 
 | # | Rung | What it is | In this repo |
 |---|------|------------|--------------|
-| 1 | **Codebase** | One paved path. Delete the hack so the next agent cannot copy it. | `src/`, `tests/` (PR #8), `skills/feature-map/FEATURE_MAP.md`, `docs/README.md` (repo layout) |
-| 2 | **Static analysis** | Lint / test / CI. Mechanical refuse. | `scripts/lint.sh`, `scripts/test.sh`, `scripts/verify.sh` and `.github/workflows/rails-gate.yml` (all PR #8) |
+| 1 | **Codebase** | One paved path. Delete the hack so the next agent cannot copy it. | `src/`, `tests/`, `skills/feature-map/FEATURE_MAP.md`, `docs/README.md` (repo layout) |
+| 2 | **Static analysis** | Lint / test / CI. Mechanical refuse. | `scripts/lint.sh`, `scripts/test.sh`, `scripts/verify.sh` and `.github/workflows/rails-gate.yml` |
 | 3 | **Rules / hooks** | Fires on the tool call. | Root `AGENTS.md`, `rules/`, `.github/pull_request_template.md` |
 | 4 | **Skills** | How to run and prove the work. | `skills/verify/`, `skills/feature-map/`, `skills/playbooks/` |
 | 5 | **Style guide** | Weakest. Prose you hope the model remembers. | `docs/STYLE.md`. Do not grow this when a higher rung can take the rule. |
