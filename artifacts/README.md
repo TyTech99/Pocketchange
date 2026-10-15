@@ -11,4 +11,4 @@ File name: `YYYY-MM-DD-what-it-shows.ext`.
 
 Each artifact should be referenced from the plan or decision it supports.
 
-Existing images (`demo-balance.png` at the root, PNGs in `wireframes/`) stay where they are for now.
+`demo-balance.png` is in `screenshots/`. PNGs in `../wireframes/` stay where they are for now.
