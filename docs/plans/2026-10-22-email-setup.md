@@ -65,13 +65,13 @@ The rule: values are never committed, pasted into chat, or written into a doc.
 
 ## Part 2. Is Hostinger email the best choice for sign-in codes?
 
-Fact from the repo: the app sends six-digit sign-in codes, plus invites and reminders described in `docs/product/MVP-USE-CASES.md`. Volume at MVP is small. What matters most is that codes arrive within seconds and land in the inbox.
+Fact from the repo: the app will send six-digit sign-in codes, plus invites and reminders described in `docs/product/MVP-USE-CASES.md`. Volume at MVP is small. What matters most is that codes arrive within seconds and land in the inbox.
 
 Prices are US list prices from each provider's own page in October 2026.
 
 | | Price at small volume | Free tier | Node SDK or SMTP | Fit for sign-in codes | Setup effort |
 |---|---|---|---|---|---|
-| **Hostinger email** ([pricing](https://www.hostinger.com/business-email)) | $1.59 a month per mailbox at renewal | Bundled or trial mailbox on some hosting plans, 100 sent a day | SMTP only, via `nodemailer` | Good enough at MVP volume. A mailbox service, not built for app mail: no sending API, delivery webhooks or per-message delivery log found. | Lowest. Domain records already in place. |
+| **Hostinger email** ([pricing](https://www.hostinger.com/business-email)) | $1.59 a month per mailbox at renewal | Bundled or trial mailbox on some hosting plans, 100 sent a day | SMTP only, via `nodemailer` | Good enough at MVP volume. A mailbox service, not built for app mail: no sending API, delivery webhooks or per-message delivery log found. | Lowest. Records already in place on `afterthedemo.com`. |
 | **Resend** ([pricing](https://resend.com/pricing)) | Pro $20 a month for 50,000 | 3,000 a month, 100 a day, no time limit | `resend`, SMTP relay | Strong. Built for app mail, with delivery webhooks. | Low. New account, domain records, API key. |
 | **Postmark** ([pricing](https://postmarkapp.com/pricing)) | Basic $15 a month for 10,000 | 100 a month | `postmark`, SMTP | Strongest. Built for transactional mail, which it keeps separate from bulk mail. | Low. New account, domain records, API token. |
 | **Amazon SES** ([pricing](https://aws.amazon.com/ses/pricing/)) | $0.10 per 1,000, no monthly fee | None ongoing; new AWS accounts get up to $200 in credits | `@aws-sdk/client-sesv2`, SMTP | Good, but bounce handling is yours to build. | Highest. AWS account, access keys, and leaving the sandbox (AWS replies within 96 hours) ([sandbox](https://docs.aws.amazon.com/ses/latest/dg/request-production-access.html)). |
