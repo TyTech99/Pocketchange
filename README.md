@@ -33,6 +33,16 @@ Demo routes, all under `/demo/`:
 
 The demo uses local SQLite through Node's built-in `node:sqlite` (needs Node 22.13 or newer). Runtime file, not committed: `data/loans.db`
 
+## Checks
+
+GitHub Actions runs `rails-gate` (`.github/workflows/rails-gate.yml`) on pull requests to `main` and on pushes to `main`. It has three jobs: `lint`, `test`, `verify`. Run the same scripts locally with Node 22.13 or newer:
+
+```bash
+./scripts/lint.sh
+./scripts/test.sh
+./scripts/verify.sh
+```
+
 ## Deploy
 
 GitHub (`TyTech99/Pocketchange`, `main`) is the source of truth. Hostinger builds the app from it as a Node.js web app at `pocketchange.afterthedemo.com`. See `docs/decisions/` for the open deploy questions.

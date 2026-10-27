@@ -1,0 +1,80 @@
+# ACTIVE rails gate — source of truth for CI. Fail closed.
+# GitHub Actions workflow for TyTech99/Pocketchange. Ported from the Gitea scaffold
+# Ty_Tech/agent-rails (.gitea/workflows/rails-gate.yml @ e516b16).
+# Jobs: lint, test, verify. Each job runs the matching scripts/*.sh and fails closed.
+# Branch protection (required checks: lint, test, verify) is a separate manual step.
+name: rails-gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22.13'
+          cache: npm
+      - name: Require executable lint.sh
+        run: |
+          if [ ! -f ./scripts/lint.sh ]; then
+            echo "scripts/lint.sh missing — fail closed"
+            exit 1
+          fi
+          if [ ! -x ./scripts/lint.sh ]; then
+            echo "scripts/lint.sh is not executable (git mode 100755 required) — fail closed"
+            exit 1
+          fi
+      - name: Lint
+        run: bash ./scripts/lint.sh
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22.13'
+          cache: npm
+      - name: Require executable test.sh
+        run: |
+          if [ ! -f ./scripts/test.sh ]; then
+            echo "scripts/test.sh missing — fail closed"
+            exit 1
+          fi
+          if [ ! -x ./scripts/test.sh ]; then
+            echo "scripts/test.sh is not executable (git mode 100755 required) — fail closed"
+            exit 1
+          fi
+      - name: Test
+        run: bash ./scripts/test.sh
+
+  verify:
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22.13'
+          cache: npm
+      - name: Require executable verify.sh
+        run: |
+          if [ ! -f ./scripts/verify.sh ]; then
+            echo "scripts/verify.sh missing — fail closed"
+            exit 1
+          fi
+          if [ ! -x ./scripts/verify.sh ]; then
+            echo "scripts/verify.sh is not executable (git mode 100755 required) — fail closed"
+            exit 1
+          fi
+      - name: Verify
+        run: bash ./scripts/verify.sh
