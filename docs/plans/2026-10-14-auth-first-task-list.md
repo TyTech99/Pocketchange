@@ -1,8 +1,8 @@
 # Auth-first task list
 
-Status: **proposed**. Nothing here is built.
-Owner: PocketChange Launch (task list). PocketChange bot aligns repo layout and UAT. OpenCode writes the tests and code.
-Date: 2026-10-14. Updated 2026-10-27 with Ty's product decision on sign-in and names.
+Status: **in progress**. A1 is recorded. A2 through A8 are not built.
+Owner: Coordinator (task list and decisions). Builder writes the tests and code. Deployer confirms preprod.
+Date: 2026-10-14. Updated 2026-10-27 with Ty's product decision on sign-in and names. Updated 2026-11-05 for handoff roles and A1 record.
 
 ## Summary
 
@@ -46,24 +46,24 @@ The code requirement for both parties matches the specs above. The new part is t
 
 | # | Task | Done when | Owner |
 |---|---|---|---|
-| A1 | Record the auth contract: assumptions 1 to 6, Ty's 2026-10-27 decision, and decisions D-A1 to D-A5 below. | The decision record is in `docs/decisions/`. | PocketChange bot |
-| A2 | Write the auth e2e scenarios as failing tests first. See the scenarios below. | Every scenario exists and fails for the right reason. | OpenCode |
-| A3 | Data model: `users` (verified email or phone, first name, last name), `login_codes` (channel, address, a hash of the code, never the code), `sessions`. | Migration runs on a throwaway database. | OpenCode |
-| A4 | Code delivery behind one interface: `send(channel, address, code)`, where channel is `email` or `sms`. Hostinger SMTP for email, Twilio for SMS, in-memory outbox in test mode. | Tests swap the sender without changing app code. | OpenCode |
-| A5 | Test hook. See the section below. | Tests get the code with no real delivery. The hook is provably off in production. | OpenCode |
-| A6 | Name step: after the first successful code, require first and last name before any other operation. Both fields are required and trimmed. | Scenarios for the name step pass. | OpenCode |
-| A7 | Gate every operation behind a verified session with a saved name. Pages redirect to `/login`, or to the name form when the name is missing. API routes return 401, or 403 when the name is missing. Today this covers the `/demo/*` routes. Production routes follow the same rule when they exist. | Scenarios A2 pass. | OpenCode |
-| A8 | Run the auth scenarios on the preprod site with test mode off. | An unverified request is rejected on the live site. | PocketChange Launch |
+| A1 | Record the auth contract: assumptions 1 to 6, Ty's 2026-10-27 decision, and decisions D-A1 to D-A5 below. | Done. Record: [`docs/decisions/2026-11-05-auth-contract.md`](../decisions/2026-11-05-auth-contract.md). | Coordinator |
+| A2 | Write the auth e2e scenarios as failing tests first. See the scenarios below. | Every scenario exists and fails for the right reason. | Builder |
+| A3 | Data model: `users` (verified email or phone, first name, last name), `login_codes` (channel, address, a hash of the code, never the code), `sessions`. | Migration runs on a throwaway database. | Builder |
+| A4 | Code delivery behind one interface: `send(channel, address, code)`, where channel is `email` or `sms`. Hostinger SMTP for email, Twilio for SMS, in-memory outbox in test mode. | Tests swap the sender without changing app code. | Builder |
+| A5 | Test hook. See the section below. | Tests get the code with no real delivery. The hook is provably off in production. | Builder |
+| A6 | Name step: after the first successful code, require first and last name before any other operation. Both fields are required and trimmed. | Scenarios for the name step pass. | Builder |
+| A7 | Gate every operation behind a verified session with a saved name. Pages redirect to `/login`, or to the name form when the name is missing. API routes return 401, or 403 when the name is missing. Today this covers the `/demo/*` routes. Production routes follow the same rule when they exist. | Scenarios A2 pass. | Builder |
+| A8 | Run the auth scenarios on the preprod site with test mode off. | An unverified request is rejected on the live site. | Deployer |
 
 ### Phase 1. The existing e2e spine
 
 | # | Task | Source | Owner |
 |---|---|---|---|
-| E1 | Harness prerequisites: database path and app port from environment, a `test` script, the Vitest and Playwright decision. | `2026-10-14-tdd-and-e2e-strategy.md`, decisions B4 and B5 | OpenCode |
-| E2 | Fixtures and seed script. Fixtures now include verified, named users and sessions for both lender and borrower. | `2026-10-14-e2e-sample-data.md`, Part 2 | OpenCode |
-| E3 | Late-payment workflow W1, run by verified, named users. | `2026-10-14-e2e-sample-data.md`, Part 1 | OpenCode |
-| E4 | Remaining workflows after W1, in the priority order Ty sets. | Decision B6 | OpenCode |
-| E5 | UAT run and evidence in `artifacts/test-output/`. | `2026-10-14-tdd-and-e2e-strategy.md` | PocketChange Launch |
+| E1 | Harness prerequisites: database path and app port from environment, a `test` script, the Vitest and Playwright decision. | `2026-10-14-tdd-and-e2e-strategy.md`, decisions B4 and B5 | Builder |
+| E2 | Fixtures and seed script. Fixtures now include verified, named users and sessions for both lender and borrower. | `2026-10-14-e2e-sample-data.md`, Part 2 | Builder |
+| E3 | Late-payment workflow W1, run by verified, named users. | `2026-10-14-e2e-sample-data.md`, Part 1 | Builder |
+| E4 | Remaining workflows after W1, in the priority order Ty sets. | Decision B6 | Builder |
+| E5 | UAT run and evidence in `artifacts/test-output/`. | `2026-10-14-tdd-and-e2e-strategy.md` | Deployer |
 
 ## Auth e2e scenarios (task A2)
 
@@ -109,4 +109,4 @@ Why this and not a fixed code like `000000`: the outbox keeps the real code path
 
 ## Next step
 
-PocketChange bot records the decisions above in `docs/decisions/` (A1). OpenCode then starts A2.
+A1 is done (`docs/decisions/2026-11-05-auth-contract.md`). Builder starts at A2.

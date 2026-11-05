@@ -25,7 +25,7 @@ Copy hammer on every public surface: *Friends & family loan tracker. We never to
 
 Complex work ALWAYS: **link → page**. Ambiguous payment: at most ONE clarify ping; ignored → pending in notebook. Free-text they send anyway: one ack + link; second unclear → stop texting, flag in-app.
 
-**Hybrid:** email-first for heavy (`payment@personalloantracker.io` + magic links); SMS for short critical nudges / OTP / inbound receipt when they text.
+**Hybrid:** email-first for heavy (`payment@<domain>` + magic links); SMS for short critical nudges / OTP / inbound receipt when they text.
 
 ### Handoff map
 

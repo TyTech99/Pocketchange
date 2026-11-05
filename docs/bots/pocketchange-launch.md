@@ -1,5 +1,8 @@
 # PocketChange Launch
 
+> Historical reference only. These bots are retired. Roles in [`AGENTS.md`](../../AGENTS.md) apply.
+
+
 Agent id: `312cac8d-0323-43ce-8377-3c4c57491ee2`
 
 ## Owns

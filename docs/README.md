@@ -6,7 +6,7 @@ Plan of record. Text only. Evidence goes in `../artifacts/`.
 
 | Path | Holds |
 |---|---|
-| `bots/` | One role file per bot. See `../AGENTS.md`. |
+| `bots/` | Historical bot profiles (retired). Live roles are in `../AGENTS.md`. |
 | `product/` | Product requirements: `MVP-USE-CASES.md`, `MVP-SCREENS.md`, `MVP-API.md`. `MVP-SCREENS.md` follows the wireframes in `../static/wireframes/`. |
 | `plans/` | Plans: launch plan, UAT plans, graft plans. One file per plan. |
 | `decisions/` | Decision records: what was decided, by whom, when, and why. |

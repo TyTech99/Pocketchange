@@ -1,6 +1,6 @@
 # Skill: penpot-wireframe
 
-How **OpenCode** produces wireframes in Penpot, **only when Ty asks**. The default wireframes in this repo are static HTML in `static/wireframes/` (rank 4 in `docs/decisions/D6-source-of-truth.md`). The PocketChange bot does not replace them with Penpot unless Ty asks (`docs/bots/pocketchange.md`).
+How a Builder produces wireframes in Penpot, **only when Ty asks**. The default wireframes in this repo are static HTML in `static/wireframes/` (rank 4 in `docs/decisions/D6-source-of-truth.md`). Do not replace them with Penpot unless Ty asks.
 
 ## When to use
 
@@ -36,4 +36,4 @@ Otherwise edit the HTML files in `static/wireframes/`. Start from `static/wirefr
 - [`static/wireframes/README.md`](../../static/wireframes/README.md)
 - [`docs/decisions/D6-source-of-truth.md`](../../docs/decisions/D6-source-of-truth.md)
 - [`docs/product/MVP-SCREENS.md`](../../docs/product/MVP-SCREENS.md)
-- [`rules/opencode.md`](../../rules/opencode.md)
+- [`rules/builder.md`](../../rules/builder.md)

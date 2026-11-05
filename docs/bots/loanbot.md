@@ -1,5 +1,8 @@
 # loanbot
 
+> Historical reference only. These bots are retired. Roles in [`AGENTS.md`](../../AGENTS.md) apply.
+
+
 Agent id: `b3418946-b141-4a1f-a553-6f984bfb35b2`
 
 ## Owns

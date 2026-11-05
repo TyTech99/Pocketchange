@@ -1,5 +1,8 @@
 # PocketChange
 
+> Historical reference only. These bots are retired. Roles in [`AGENTS.md`](../../AGENTS.md) apply.
+
+
 Agent id: `90385cbd-998c-4a0b-8e18-6b5766f1fa1d`
 
 ## Owns
