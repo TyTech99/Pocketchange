@@ -65,7 +65,7 @@ Pocket Change never touches money.
 ## Rails
 
 - **One SMS number** for all; route via From + nickname + receipt to/from; ask when ambiguous (**one** fork max).
-- **One email:** `payment@personalloantracker.io`; route via forwarder metadata + body; same clarify rules.
+- **One email:** `payment@tinyloan.me`; route via forwarder metadata + body; same clarify rules.
 - Prefer **email forward** for payment proof (including pasting an SMS receipt into email); SMS/MMS forward is the easy alternate — **same parser path**, then confirm SMS or clarify once.
 - Magic links: SMS and/or email; email preferred when present for heavy work.
 
@@ -119,7 +119,7 @@ Use case: product must not turn SMS into a chatbot.
 
 Use case: borrower (or lender) forwards a payment screenshot or receipt.
 
-1. **Prefer email** to `payment@personalloantracker.io` (including pasting an SMS receipt into email).
+1. **Prefer email** to `payment@tinyloan.me` (including pasting an SMS receipt into email).
 2. If they **MMS/SMS** a screenshot/receipt to the Pocket Change number → same parser path as email.
 3. On clear match (loan + amount): post ledger → **confirm SMS one-liner to both** (`Boat: $50 applied · $420 left`). No ask.
 4. On ambiguous (multi-loan / odd amount / unknown): **ONE** clarify SMS with tap choices or link to `clarify.html`. If ignored → mark pending in notebook; do not chase.

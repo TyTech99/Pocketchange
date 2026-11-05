@@ -1,12 +1,12 @@
 # rules/ (rung 3)
 
-Tool-facing pointers for agents. Root [`AGENTS.md`](../AGENTS.md) is the constitution. These files specialize it per tool.
+Tool-facing pointers for agents. Root [`AGENTS.md`](../AGENTS.md) is the constitution. These files specialize it by role.
 
 | File | Audience |
 |------|----------|
-| [opencode.md](opencode.md) | OpenCode builder |
-| [hermes.md](hermes.md) | Hermes optional always-on |
-| [grok-bot.md](grok-bot.md) | Grok Bot coordinator |
+| [builder.md](builder.md) | Builder: code and tests |
+| [coordinator.md](coordinator.md) | Coordinator / Reviewer: plans, decisions, evidence |
+| [hermes.md](hermes.md) | Optional companion (off by default) |
 | [bugbot.md](bugbot.md) | Review / bugbot style checks |
 | [uat.md](uat.md) | Product UAT before human review |
 

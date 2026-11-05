@@ -1,30 +1,33 @@
 # AGENTS.md
 
-Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth). This file says which bot owns what. Details are in `docs/bots/`.
+Pocket Change (`TyTech99/Pocketchange` on GitHub, the source of truth). This file assigns roles any coding-agent team can fill. Historical bot profiles stay in `docs/bots/` as reference only.
 
-## Bots
+## Start here
 
-| Bot | Owns | Detail |
-|---|---|---|
-| PocketChange Launch | Path from wireframes to live production | [docs/bots/pocketchange-launch.md](docs/bots/pocketchange-launch.md) |
-| PocketChange | Project orchestration: repo layout, agent-rails graft, UAT plans | [docs/bots/pocketchange.md](docs/bots/pocketchange.md) |
-| loanbot | Built the prototype. It is reference only (`src/routes/demo/`, `src/lib/demo/`) and does not own the build. | [docs/bots/loanbot.md](docs/bots/loanbot.md) |
+1. [`README.md`](README.md)
+2. Plan of record: [`docs/product/MVP-USE-CASES.md`](docs/product/MVP-USE-CASES.md), [`MVP-SCREENS.md`](docs/product/MVP-SCREENS.md), [`MVP-API.md`](docs/product/MVP-API.md), [`static/wireframes/`](static/wireframes/)
+3. Decisions: [`docs/decisions/`](docs/decisions/) — start with D6, node-sqlite, the 2026-11-05 ledger event log, and the 2026-11-05 auth contract
+4. Build order: [`docs/plans/2026-10-14-auth-first-task-list.md`](docs/plans/2026-10-14-auth-first-task-list.md) — do A2 through A8 in order (A1 is done)
+5. Non-blocking open items: [`docs/decisions/open-questions.md`](docs/decisions/open-questions.md)
 
-## Other actors
+Agents own technical decisions. Ty owns product concept and scenarios. Bring product questions to Ty one at a time, with plain-words context. Agents decide tech without asking him.
 
-- **Grok Bot** orchestrates the bots. It made the initial commit as `grokbot_ty` (9e80a91).
-- **OpenCode** is an external coding tool on OmarMacMini. It does the code edits.
-- **Ty** approves plans and decides priorities.
+## Roles
 
-## Rules
+| Role | Owns |
+|---|---|
+| **Ty** | Product owner: concept, scenarios, and approvals. Nothing goes to `main` without his explicit go. One go covers one action only. |
+| **Coordinator** (also called Reviewer) | Plans, records tech decisions, checks evidence before anything is called done. See [`rules/coordinator.md`](rules/coordinator.md). |
+| **Builder** | Writes app code and tests under `src/` and `tests/`. See [`rules/builder.md`](rules/builder.md). |
+| **Deployer** | Preprod at `pocketchange.afterthedemo.com` (Hostinger Node.js from `main`). Confirms live behavior after merge. |
 
-- Present plans to Ty for approval before any clone, graft, or conversion.
-- App code is written by OpenCode, not by the PocketChange bot.
-- Bots stay inside the limits in their own file.
+Optional companion notes: [`rules/hermes.md`](rules/hermes.md). Review checklist: [`rules/bugbot.md`](rules/bugbot.md). Product UAT: [`rules/uat.md`](rules/uat.md).
+
+Retired bot profiles (PocketChange Launch, PocketChange, loanbot) are historical only: [`docs/bots/`](docs/bots/). Use the roles above.
 
 ## Rails
 
-Short rules for **OpenCode**, **Hermes**, and **Grok Bot**. Full ladder: [`docs/RAILS.md`](docs/RAILS.md). The gate is `.github/workflows/rails-gate.yml`.
+Full ladder: [`docs/RAILS.md`](docs/RAILS.md). The gate is `.github/workflows/rails-gate.yml`.
 
 ### Mandatory
 
@@ -34,29 +37,12 @@ Short rules for **OpenCode**, **Hermes**, and **Grok Bot**. Full ladder: [`docs/
 4. Never claim green without **script/CI evidence** (`./scripts/lint.sh`, `./scripts/test.sh`, `./scripts/verify.sh` exit 0).
 5. Run those scripts from the repo root before claiming done.
 6. Do not invent top-level folders outside the layout in [`docs/README.md`](docs/README.md).
-7. No secrets in git. No bypassing CI.
+7. No secrets in git. No bypassing CI. Env var names only in docs and chat.
 8. **UI:** wireframes before build. They are static HTML in `static/wireframes/`. Use Penpot only when Ty asks ([`skills/penpot-wireframe/SKILL.md`](skills/penpot-wireframe/SKILL.md)).
 9. **Product UAT:** before human product review, serve wireframes on `:12000` and the app on `:12001`. Not a `rails-gate` check. See [`rules/uat.md`](rules/uat.md) and `docs/plans/2026-10-14-tdd-and-e2e-strategy.md`.
 
-### Roles
-
-Ownership is in the **Bots** table above. On the rails:
-
-- **Grok Bot** — outer coordinator only; see `rules/grok-bot.md`. Does not replace OpenCode or own pass/fail.
-- **PocketChange** — owns repo layout, the agent-rails graft and UAT plans; see `docs/bots/pocketchange.md`. Writes no app code.
-- **PocketChange Launch** — owns the test strategy and the path to production; see `docs/bots/pocketchange-launch.md`.
-- **OpenCode** — builds features and tests; see `rules/opencode.md`. Wireframes via Penpot MCP only when Ty asks: `skills/penpot-wireframe/SKILL.md`.
-- **Hermes** — optional always-on; see `rules/hermes.md`. Off by default on the happy path.
-- **Ty** — approves plans, sets priorities, reviews rail paths. Nothing goes to `main` without Ty's go-ahead.
-
 ### Out of scope
 
-- No Grok Build discovery/PM/sign-off theatre.
 - Gates are GitHub Actions + scripts, not chat assertions.
-
-## Repo state at time of writing
-
-- Branch: `main` only.
-- History: see `git log`. The first commits are `9e80a91` (initial, grokbot_ty) and `5c4fb21` (Ty, 2026-09-28).
 - UAT ports: wireframes `:12000`, Svelte app `:12001` (see `docs/plans/2026-10-14-tdd-and-e2e-strategy.md`).
 - The earlier prototype is reference material in `src/routes/demo/` and `src/lib/demo/` (served at `/demo/`). It is not the architecture. It uses `node:sqlite`. Hostinger builds the repo as a Node.js web app from `main`.

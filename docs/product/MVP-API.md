@@ -10,6 +10,8 @@ Status: MVP design sketch; endpoint names and JSON are provisional. This API is 
 - There is no `money:move`, bank/card write, payout, collection, or “auto-agree” permission in MVP.
 - Agent-originated work follows the same SMS doorbell/web handoff rule: complex terms, change requests, disputes, and clarification resolve on a page or an equivalent explicitly authorized API intent, not a multi-turn SMS wizard.
 
+The production domain is `tinyloan.me` (Ty, 2026-11-05).
+
 ## OAuth 2.1 / delegated authorization
 
 Use OAuth 2.1 Authorization Code + PKCE (`S256`) for agent clients. Do not use the implicit grant or resource-owner-password grant. TLS is required.
@@ -17,10 +19,10 @@ Use OAuth 2.1 Authorization Code + PKCE (`S256`) for agent clients. Do not use t
 Illustrative issuer endpoints:
 
 ```text
-GET  https://auth.personalloantracker.io/oauth/authorize
-POST https://auth.personalloantracker.io/oauth/token
-POST https://auth.personalloantracker.io/oauth/revoke
-GET  https://auth.personalloantracker.io/.well-known/oauth-authorization-server
+GET  https://auth.tinyloan.me/oauth/authorize
+POST https://auth.tinyloan.me/oauth/token
+POST https://auth.tinyloan.me/oauth/revoke
+GET  https://auth.tinyloan.me/.well-known/oauth-authorization-server
 ```
 
 An agent starts authorization with a registered `client_id`, exact pre-registered `redirect_uri`, `response_type=code`, `code_challenge`, `code_challenge_method=S256`, `state`, and the minimum requested scopes. OpenID Connect may add `nonce` and identity claims, but the API only trusts the resulting issuer/audience-bound access token.
@@ -49,8 +51,8 @@ No MVP scope grants household-wide access. A client must request only what it ne
 
 ```json
 {
-  "iss": "https://auth.personalloantracker.io",
-  "aud": "https://api.personalloantracker.io",
+  "iss": "https://auth.tinyloan.me",
+  "aud": "https://api.tinyloan.me",
   "sub": "usr_123",             
   "client_id": "agent_acme",
   "scope": "loans:read loans:propose payments:propose",
@@ -79,7 +81,7 @@ The audit trail records the agent/client and the user it acted for, including de
 
 ## Intent-oriented API surface
 
-Base URL: `https://api.personalloantracker.io/v1`. JSON resource names below are illustrative. The server should expose intent records rather than a generic unrestricted state-update endpoint.
+Base URL: `https://api.tinyloan.me/v1`. JSON resource names below are illustrative. The server should expose intent records rather than a generic unrestricted state-update endpoint.
 
 All POSTs require an `Idempotency-Key` and return the intent's stable ID, status, and resulting resource links. A repeated key with the same authenticated client, subject, route, and request hash returns the original result; a different body with that key returns `409 idempotency_conflict`.
 

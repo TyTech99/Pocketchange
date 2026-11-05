@@ -37,7 +37,7 @@ Port **3460** (do not touch :10880 or model ports).
 Complex work ALWAYS: **link → page (web)**. Ambiguous payment: at most ONE clarify ping; if ignored → pending in notebook; don’t chase in SMS.  
 Free-text they send anyway: one ack with link if mappable; else “Open to tell us: [link]”; second unclear → stop texting, flag in-app.
 
-**Hybrid:** email-first for heavy (magic links + `payment@personalloantracker.io`); SMS only short critical nudges / OTP / inbound receipt forwards when they text.
+**Hybrid:** email-first for heavy (magic links + `payment@tinyloan.me`); SMS only short critical nudges / OTP / inbound receipt forwards when they text.
 
 Copy hammer: *Friends & family · we never touch your money.* Chat-first but SMS is doorbell.
 
@@ -63,7 +63,7 @@ Screens show a companion **phone SMS preview** strip and/or a green **SMS / MMS 
 On ubuDual5060 the folder is served already (`python -m http.server` on :3460). Locally:
 
 ```bash
-cd /workspace/personalloantracker/wireframes
+cd static/wireframes
 python3 -m http.server 3460 --bind 127.0.0.1
 ```
 
