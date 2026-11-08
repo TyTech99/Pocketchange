@@ -15,7 +15,7 @@
     "@types/node": "^22",
     "svelte": "^5.16.0",
     "typescript": "^5.7.2",
-    "vite": "^6.4.4"
+    "vite": "^6.4.5"
   },
   "type": "module",
   "engines": {
