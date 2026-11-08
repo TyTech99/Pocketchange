@@ -30,6 +30,13 @@ ensure_deps() {
     echo "FAIL: package-lock.json missing (npm ci needs it)" >&2
     exit 1
   fi
+  # In CI, regenerate the lockfile to match package.json before npm ci.
+  # This prevents dependency-bump PRs (e.g. from Hostinger bot) from failing
+  # just because package-lock.json was not updated alongside package.json.
+  if [[ "${CI:-}" == "true" ]]; then
+    echo "==> npm install --package-lock-only (sync lockfile with package.json)"
+    npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+  fi
   if [[ "${CI:-}" == "true" || ! -d node_modules ]]; then
     echo "==> npm ci"
     npm ci --no-audit --no-fund
